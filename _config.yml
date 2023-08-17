@@ -1,13 +1,13 @@
 
 title: ChenDaqian
 url: 'https://chendaqian.github.io/'
-baseurl: '/PanelCV' #change it according to your repository name
+baseurl: '/chendaqian' #change it according to your repository name
 
 
 
 # Profile information
 yourname: ChenDaqian  ## put your name
-location: "cn÷–"
+location: "Beijing, China"
 
 
 ## Social Profiles
