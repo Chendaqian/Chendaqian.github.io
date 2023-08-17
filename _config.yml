@@ -7,7 +7,7 @@ baseurl: '/PanelCV' #change it according to your repository name
 
 # Profile information
 yourname: ChenDaqian  ## put your name
-location: '北京，中国'
+location: cn
 
 
 ## Social Profiles
