@@ -3,7 +3,7 @@ safe: false
 # build settings
 markdown: kramdown
 highlighter: rouge
-lsi: false
+lsi: true
 permalink: /:title
 
 title: "ChenDaqian"
