@@ -1,22 +1,30 @@
+safe: false
 
-title: ChenDaqian
-url: 'https://chendaqian.github.io/'
-baseurl: '/chendaqian' #change it according to your repository name
+# build settings
+markdown: kramdown
+highlighter: rouge
+lsi: false
+permalink: /:title
 
+title: "Your Name"
+description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"
+baseurl: "/onepage"
+url: "https://lukas-h.github.io" # replace by your site's url
+twitter_username: your-name
+github_username:  lukas-h # (your name)
+accent: "#f7f7e6" # accent color for blog column
 
+author: "Your Name"
+address: "Your Street, <br>Your City, Country"
+email: "your@email.com"
 
-# Profile information
-yourname: ChenDaqian  ## put your name
-location: "Beijing, China"
+# google analytics tracking code, please change the value
+g_analytics: ""
 
+# language settings
+isolang: en
 
-## Social Profiles
-facebook: http://www.facebook.com  ## your facebook account url
-twitter: http://www.twitter.com  ## your twitter account url
-linkedin: http://www.linkedin.com  ## your linkedin account url
-dribbble: http://www.dribble.com  ## you dribbble account url
-foursquare: http://www.foursquare.com  ## your foursquare account url
-
-
-
-# Update all the sections by editing the files inside _includes folder.
+# exclude files
+exclude:
+  - LICENSE
+  - README.md
