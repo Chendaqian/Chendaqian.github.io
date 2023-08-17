@@ -3,12 +3,12 @@ safe: false
 # build settings
 markdown: kramdown
 highlighter: rouge
-lsi: true
+lsi: false
 permalink: /:title
 
 title: "ChenDaqian"
 description: "desc"
-baseurl: "/"
+baseurl: "/onepage"
 url: "https://chendaqian.github.io/" # replace by your site's url
 twitter_username: ChenDaqian
 github_username:  ChenDaqian # (your name)
