@@ -9,20 +9,20 @@ permalink: /:title
 title: "ChenDaqian"
 description: "desc"
 baseurl: "/"
-url: "https://lukas-h.github.io" # replace by your site's url
-twitter_username: your-name
-github_username:  lukas-h # (your name)
+url: "https://chendaqian.github.io/" # replace by your site's url
+twitter_username: ChenDaqian
+github_username:  ChenDaqian # (your name)
 accent: "#f7f7e6" # accent color for blog column
 
-author: "Your Name"
-address: "Your Street, <br>Your City, Country"
-email: "your@email.com"
+author: "author"
+address: "haidian, <br>beijing, beijing"
+email: "hi.world@outlook.com"
 
 # google analytics tracking code, please change the value
 g_analytics: ""
 
 # language settings
-isolang: en
+isolang: zh
 
 # exclude files
 exclude:
