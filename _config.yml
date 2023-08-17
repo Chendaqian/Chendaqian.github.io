@@ -7,7 +7,7 @@ lsi: false
 permalink: /:title
 
 title: "ChenDaqian"
-description: ".NET ÑĞ·¢¹¤³ÌÊ¦"
+description: ".NET ç ”å‘å·¥ç¨‹å¸ˆ"
 baseurl: "/"
 url: "https://lukas-h.github.io" # replace by your site's url
 twitter_username: ChenDaqian
@@ -15,7 +15,7 @@ github_username:  ChenDaqian # (your name)
 accent: "#f7f7e6" # accent color for blog column
 
 author: "ChenDaqian"
-address: "º£µí£¬ÖĞ¹ú"
+address: "æµ·æ·€ï¼Œä¸­å›½"
 email: "hi.world@outlook.com"
 
 # google analytics tracking code, please change the value
