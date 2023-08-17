@@ -1,4 +1,3 @@
-
 <script>
 
 {% if site.g_analytics %}
@@ -10,7 +9,4 @@
   ga('create', '{{ site.g_analytics }}', 'auto');
   ga('send', 'pageview');
 {% endif %}
-
-  document.getElementById('year').innerHTML = new Date().getFullYear();
-  
 </script>
