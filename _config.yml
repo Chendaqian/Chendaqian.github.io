@@ -1,30 +1,22 @@
-safe: false
 
-# build settings
-markdown: kramdown
-highlighter: rouge
-lsi: false
-permalink: /:title
+title: My Resume
+url: 'http://junlulocky.com'
+baseurl: '/PanelCV' #change it according to your repository name
 
-title: "ChenDaqian"
-description: "desc"
-baseurl: "/onepage"
-url: "https://chendaqian.github.io/" # replace by your site's url
-twitter_username: ChenDaqian
-github_username:  ChenDaqian # (your name)
-accent: "#f7f7e6" # accent color for blog column
 
-author: "author"
-address: "haidian, <br>beijing, beijing"
-email: "hi.world@outlook.com"
 
-# google analytics tracking code, please change the value
-g_analytics: ""
+# Profile information
+yourname: Brown Smith  ## put your name
+location: San Francisco , CA
 
-# language settings
-isolang: zh
 
-# exclude files
-exclude:
-  - LICENSE
-  - README.md
+## Social Profiles
+facebook: http://www.facebook.com  ## your facebook account url
+twitter: http://www.twitter.com  ## your twitter account url
+linkedin: http://www.linkedin.com  ## your linkedin account url
+dribbble: http://www.dribble.com  ## you dribbble account url
+foursquare: http://www.foursquare.com  ## your foursquare account url
+
+
+
+# Update all the sections by editing the files inside _includes folder.
