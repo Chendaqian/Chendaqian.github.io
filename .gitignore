@@ -1,2 +1,5 @@
 .DS_Store
 /.vs
+/_site
+/obj
+/Web.csproj.user
