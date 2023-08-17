@@ -11,12 +11,9 @@ window.console = window.console || (function() {
     return c;
 })();
 
-
 jQuery(document).ready(function($) {
-
-    // layout Type				
+    // layout Type
     if ($.cookie('bg_type') != null) {
-        
         if ($.cookie('bg_type') == 'bg_color'){
             $('#s1').attr('checked', true);
 			$("#cb_slideshow" ).css("display", "none");
@@ -26,15 +23,13 @@ jQuery(document).ready(function($) {
 		}
     }
 
-    // type profile				
+    // type profile
     if ($.cookie('profile_type') != null) {
-
         if ($.cookie('profile_type') == 'pic_prof_2') {
             $('#r2').attr('checked', true);
 
             $("#pic_prof_2").css('display', 'block');
             $("#pic_prof_1").css('display', 'none');
-
         } else {
             $('#r1').attr('checked', true);
 
@@ -43,18 +38,15 @@ jQuery(document).ready(function($) {
         }
     }
 
-
     // Layout Colors
     if ($.cookie('layout_color') != null) {
         $("#colors-style").attr("href", $.cookie('layout_color'));
     }
 
-
     // Layout bgColors
     if ($.cookie('layout_bgColors') != null) {
         $('body').css('backgroundColor', $.cookie('layout_bgColors')).css('backgroundImage', 'none');
     }
-
 
     // Layout bgImage
 
@@ -63,7 +55,6 @@ jQuery(document).ready(function($) {
             $('body').css('backgroundImage', $.cookie('layout_bgImage'));
         }
     }
-
 
     // Custumize Color
 
@@ -129,10 +120,9 @@ jQuery(document).ready(function($) {
 
     // Custumizz Style
 
-    //radio style profile	
+    //radio style profile
 
-
-    //radio layout	
+    //radio layout
     $("#r1").on('change', function() {
         $("#pic_prof_1").css('display', 'block');
         $("#pic_prof_2").css('display', 'none');
@@ -151,21 +141,21 @@ jQuery(document).ready(function($) {
 
     // Custumizz Style
 
-    //radio layout	
+    //radio layout
 
     $("#s1").on('change', function() {
         $("#cb_slideshow").css("display", "none");
         $.cookie('bg_type', 'bg_color');
         return false;
     });
-	
+
 	$("#s2").on('change', function() {
         $("#cb_slideshow").css("display", "block");
         $.cookie('bg_type', 'bg_slider');
         return false;
     });
 
-    // Style 
+    // Style
 
     $('#custumize-style').animate({
         left: '-270px'
@@ -183,7 +173,6 @@ jQuery(document).ready(function($) {
             // open switcher and add class open
             $(this).addClass('open');
             $(this).removeClass('closed');
-
         } else {
             $('#custumize-style').animate({
                 left: '-270px'
@@ -192,7 +181,6 @@ jQuery(document).ready(function($) {
             // close switcher and add closed
             $(this).addClass('closed');
             $(this).removeClass('open');
-
         }
     })
 
@@ -205,7 +193,6 @@ jQuery(document).ready(function($) {
 
         $.cookie('layout_bgImage', bg);
         $.cookie('layout_bgColors', null);
-
     })
 
     $('#bgsolid li a').click(function(e) {
@@ -216,14 +203,11 @@ jQuery(document).ready(function($) {
         $('body').css('backgroundColor', bg).css('backgroundImage', 'none');
 
         $.cookie('layout_bgColors', bg);
-
     })
 
     $('#button-reset a').click(function(e) {
         var bg = '#717171';
         $('body').css('backgroundColor', '#717171').css('backgroundImage', 'none');
         $.cookie('layout_bgColors', bg);
-
     })
-
 });
