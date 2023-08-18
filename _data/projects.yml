@@ -1,16 +1,45 @@
-- name: 开发豫园
-  link: "#"
-  description: '<a href="https://dotnet.microsoft.com/" rel="nofollow"><img src="https://camo.githubusercontent.com/35245b23ad6f48d68d6d8be78dd4ad3431cad5172960be87048c1663218097ee/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d2e4e45544672616d65776f726b2f436f72652d2532333741303039393f7374796c653d666c61742d737175617265266c6f676f3d646f746e6574266c6f676f436f6c6f723d253233666666666666" alt="sharp" data-canonical-src="https://img.shields.io/badge/-.NETFramework/Core-%237A0099?style=flat-square&amp;logo=dotnet&amp;logoColor=%23ffffff" style="max-width: 100%;"></a>
-<a href="https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/" rel="nofollow"><img src="https://camo.githubusercontent.com/83bb4051be6c62926bbdf73c8160c130918cff7919ee04b034850bf3a4adebcb/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d432f4653686172702d2532333741303039393f7374796c653d666c61742d737175617265266c6f676f3d7368617270266c6f676f436f6c6f723d253233666666666666" alt="sharp" data-canonical-src="https://img.shields.io/badge/-C/FSharp-%237A0099?style=flat-square&amp;logo=sharp&amp;logoColor=%23ffffff" style="max-width: 100%;"></a>
-<a href="https://www.python.org/" rel="nofollow"><img src="https://camo.githubusercontent.com/e2a5e5364abeb08f1beb07c4e236976a40f262b096635797153928577f0b9ca9/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d507974686f6e2d2532334545454530303f7374796c653d666c61742d737175617265266c6f676f3d707974686f6e266c6f676f436f6c6f723d253233303042424646" alt="python" data-canonical-src="https://img.shields.io/badge/-Python-%23EEEE00?style=flat-square&amp;logo=python&amp;logoColor=%2300BBFF" style="max-width: 100%;"></a>
-<a href="https://www.java.com/" rel="nofollow"><img src="https://camo.githubusercontent.com/bfce27fdc74f5a0ce41183603465c75d1047fb0597d4279d997d2366677ee432/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d4a6176612d2532334234313731373f7374796c653d666c61742d737175617265266c6f676f3d6a6f706c696e266c6f676f436f6c6f723d253233303042424646" alt="java" data-canonical-src="https://img.shields.io/badge/-Java-%23B41717?style=flat-square&amp;logo=joplin&amp;logoColor=%2300BBFF" style="max-width: 100%;"></a>
-<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" rel="nofollow"><img src="https://camo.githubusercontent.com/1d0811cf1220569d8990792c23f3585ac8ed20217e460d165d724e021675adc5/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d4a6176615363726970742d2532334545454530303f7374796c653d666c61742d737175617265266c6f676f3d6a617661736372697074266c6f676f436f6c6f723d30304242464626636f6c6f723d253233464643453541" alt="JavaScript" data-canonical-src="https://img.shields.io/badge/-JavaScript-%23EEEE00?style=flat-square&amp;logo=javascript&amp;logoColor=00BBFF&amp;color=%23FFCE5A" style="max-width: 100%;"></a>'
-- name: 开发工具
-  link: "#"
-  description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"
-- name: project 3
-  link: "#"
-  description: "Lorem ipsum dolor sit amet, consetetur sadipscing elitr, sed diam nonumy eirmod tempor invidunt ut labore et dolore magna aliquyam"
+- name: Dev language
+  items:
+    - name: CSharp
+      href: 'https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/'
+      imgSrc: >-
+        https://camo.githubusercontent.com/83bb4051be6c62926bbdf73c8160c130918cff7919ee04b034850bf3a4adebcb/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d432f4653686172702d2532333741303039393f7374796c653d666c61742d737175617265266c6f676f3d7368617270266c6f676f436f6c6f723d253233666666666666
+    - name: Python
+      href: 'https://www.python.org/'
+      imgSrc: >-
+        https://camo.githubusercontent.com/e2a5e5364abeb08f1beb07c4e236976a40f262b096635797153928577f0b9ca9/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d507974686f6e2d2532334545454530303f7374796c653d666c61742d737175617265266c6f676f3d707974686f6e266c6f676f436f6c6f723d253233303042424646
+    - name: Java
+      href: 'https://www.java.com/'
+      imgSrc: >-
+        https://camo.githubusercontent.com/bfce27fdc74f5a0ce41183603465c75d1047fb0597d4279d997d2366677ee432/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d4a6176612d2532334234313731373f7374796c653d666c61742d737175617265266c6f676f3d6a6f706c696e266c6f676f436f6c6f723d253233303042424646
+    - name: JavaScript
+      href: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript'
+      imgSrc: >-
+        https://camo.githubusercontent.com/1d0811cf1220569d8990792c23f3585ac8ed20217e460d165d724e021675adc5/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d4a6176615363726970742d2532334545454530303f7374796c653d666c61742d737175617265266c6f676f3d6a617661736372697074266c6f676f436f6c6f723d30304242464626636f6c6f723d253233464643453541
+- name: Middleware
+  items:
+    - name: WCF
+      href: 'https://learn.microsoft.com/en-us/dotnet/framework/wcf/whats-wcf'
+      imgSrc: >-
+        https://camo.githubusercontent.com/a598a814e8d5a4be3acd003ba45bbc0348a22230f37f999a8f27df3205ae15f0/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d5743462d2532334331303036363f7374796c653d666c61742d737175617265266c6f676f3d77616e7465646c79266c6f676f436f6c6f723d253233666666666666
+#- name: Distributed components
+#  items:
+#    - name: 
+#      href: ''
+#      imgSrc: >-
+#- name: Dev tools
+#  items:
+#    - name: 
+#      href: ''
+#      imgSrc: >-
+#
+#
+#    - name: 
+#      href: ''
+#      imgSrc: >-
+
+      
+
 
 
 

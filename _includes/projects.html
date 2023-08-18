@@ -2,7 +2,14 @@
 <ul>
     {% for project in site.data.projects %}
     <li>
-        <p><a href="{{ project.link }}">{{ project.name }}</a><br><small>{{ project.description }}</small></p>
+        <p>
+            <a href="{{ project.link }}">{{ project.name }}</a><br>
+            {% for elm in project.items %}
+            <a href="{{ elm.href }}" title="{{ elm.name }}">
+                <img src="{{ elm.imgSrc }}" alt="{{ elm.name }}" title="{{ elm.name }}" />
+            </a>
+            {% endfor %}
+        </p>
     </li>
     {% endfor %}
 </ul>
