@@ -28,12 +28,9 @@
         <div class="unit two-thirds blog-column">
             <div class="grid">
                 <div class="unit whole" id="/blog">
-                    <h1>Blog</h1>
+                    <h1>Resume</h1>
                 </div>
                 {{ content }}
-                <!--<div class="unit whole" id="/subscribe">
-                    <p><a href="feed.xml" target="_blank" title="RSS">RSS</a> & <a title="Atom" target="_blank" href="atom.xml">ATOM</a> Feed<br>Built with <a href="http://jekyllrb.com/" target="_blank" title="Jekyllrb">Jekyll</a>, Code on <a title="Github" href="https://github.com/ChenDaqian/chendaqian.github.io">Github</a></p>
-                </div>-->
             </div>
         </div>
 
@@ -42,10 +39,9 @@
         </div>
         <div class="unit whole hide-on-desktops" id="/impressum">
             {% include imprint.html %}
+            {% include unitwhole.html %}
         </div>
-        {% include unitwhole.html %}
     </div>
-
     {% include foot.html %}
 </body>
 </html>
