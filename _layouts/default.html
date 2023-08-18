@@ -12,10 +12,10 @@
                     <p>{{ site.description }}</p>
                 </div>
                 <div class="unit whole" id="/contact">
-                    <a href="https://twitter.com/{{ site.twitter_username }}" class="btn"><i class="icon ion-ios-paw"></i></a>
-                    <a href="https://github.com/{{ site.github_username }}" class="github-icon btn"><i class="icon ion-social-github"></i></a>
+                    <a href="https://www.cnblogs.com/Chendaqian/" class="btn" title="cnblogs" target="_blank"><i class="icon ion-ios-paw"></i></a>
+                    <a href="https://github.com/{{ site.github_username }}" target="_blank" title="github" class="github-icon btn"><i class="icon ion-social-github"></i></a>
                     <a href="mailto:{{ site.email }}" class="mail-icon btn"><i class="icon ion-email"></i></a>
-                    <a href="feed.xml" class="rss-icon btn"><i class="icon ion-social-rss"></i></a>
+                    <a href="feed.xml" class="rss-icon btn" target="_blank" title="RSS"><i class="icon ion-social-rss"></i></a>
                 </div>
                 <div class="unit whole hide-on-mobiles" id="/projects">
                     {% include projects.html %}
@@ -32,7 +32,7 @@
                 </div>
                 {{ content }}
                 <div class="unit whole" id="/subscribe">
-                    <p><a href="feed.xml">RSS</a> & <a href="atom.xml">ATOM</a> Feed<br>Built with Jekyll, Code on <a href="https://github.com/lukas-h/onepage">Github</a></p>
+                    <p><a href="feed.xml" target="_blank" title="RSS">RSS</a> & <a title="atom" target="_blank" href="atom.xml">ATOM</a> Feed<br>Built with <a href="http://jekyllrb.com/" target="_blank" title="jekyllrb">Jekyll</a>, Code on <a title="github" href="https://github.com/ChenDaqian/chendaqian.github.io">Github</a></p>
                 </div>
             </div>
         </div>
