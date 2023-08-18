@@ -7,11 +7,7 @@ lsi: false
 permalink: /:title
 
 title: "ChenDaqian"
-description: '.NET Egineer<br/>
-🔭 I’m now working for <a href="https://www.beisen.com/" title="Beisen">Beisen</a>.<br/>
-😄 currently coding in <a href="https://learn.microsoft.com/en-us/dotnet/csharp/" title="CSharp">C#</a> and <a href="https://www.java.com/en/" title="Java">Java</a>.<br/>
-💝 I like playing <a href="https://www.xbox.com/en-us/games/store/dark-souls-remastered/BS18VCF4NLQ9/0001" title="DarkSouls">DarkSouls</a>🔥 and <a href="https://specialized.com.cn/?lang=en" title="specialized">road cycling</a>🚴.<br/>
-❓ Be free to ask me about anything <a href="https://github.com/ChenDaqian/ChenDaqian/issues" title="issues">here</a>.'
+description: '.NET Egineer<br/>'
 baseurl: "/"
 url: "https://chendaqian.github.io/" # replace by your site's url
 twitter_username: ChenDaqian
