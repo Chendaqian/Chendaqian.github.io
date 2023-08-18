@@ -4,10 +4,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, minimum-scale=1.0, maximum-scale=1.0">
 
     <title>{{ site.title }}</title>
-    <meta name="description" content="chendaqian Resume">
-    <meta name="robots" content="index,follow">
-    <meta name="author" content="{{ site.author }}">
-    <meta itemprop="name" content="{{ site.title }}">
+    <meta name="description" content="chendaqian Resume" />
+    <meta name="robots" content="index,follow" />
+    <meta name="author" content="{{ site.author }}" />
+    <meta itemprop="name" content="{{ site.title }}" />
 
     <meta property="og:url" content="{{ site.url }}" />
     <meta property="og:type" content="website" />
@@ -16,17 +16,18 @@
     <meta property="og:image" content="{{ site.url }}/images/favicon.png" />
     <meta property="og:image:type" content="image/png" />
 
-    <meta name="twitter:card" content="summary" />
-    <meta name="twitter:title" content="{{ site.title }}" />
-    <meta name="twitter:image" content="{{ site.url }}/images/favicon.png" />
+    <link href="{{ "/atom.xml" | prepend: site.baseurl }}" type="application/atom+xml" rel="alternate" title="ATOM feed" />
+    <link href="{{ "/feed.xml" | prepend: site.baseurl }}" type="application/rss+xml" rel="alternate" title="RSS feed" />
 
-    <link href="{{ "/atom.xml" | prepend: site.baseurl }}" type="application/atom+xml" rel="alternate" title="ATOM feed">
-    <link href="{{ "/feed.xml" | prepend: site.baseurl }}" type="application/rss+xml" rel="alternate" title="RSS feed">
+    <link rel="shortcut icon" href="{{ "/images/favicon.png" | prepend: site.baseurl }}" />
+    <link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}" />
+    <link rel="stylesheet" href="{{ "/assets/css/gridism.css" | prepend: site.baseurl }}" />
+    <link rel="stylesheet" href="{{ "/assets/css/ionicons.css" | prepend: site.baseurl }}" />
+    <link rel="stylesheet" href="{{ "/assets/layui/css/layui.css" | prepend: site.baseurl }}" />
 
-    <link rel="shortcut icon" href="{{ "/images/favicon.png" | prepend: site.baseurl }}">
-    <link rel="stylesheet" href="{{ "/assets/css/main.css" | prepend: site.baseurl }}">
-    <link rel="stylesheet" href="{{ "/assets/css/gridism.css" | prepend: site.baseurl }}">
-    <link rel="stylesheet" href="{{ "/assets/css/ionicons.css" | prepend: site.baseurl }}">
+    <script type="text/javascript" src="{{ "/assets/layui/layui.js" | prepend: site.baseurl }}" />
+    <script type="text/javascript" src="/assets/jquery-3.7.0.min.js" />
+
     <style>
         .blog-column{
             background: {{ site.accent }};
