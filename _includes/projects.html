@@ -4,11 +4,13 @@
     <li>
         <p>
             <a href="{{ project.link }}">{{ project.name }}</a><br>
-            {% for elm in project.items %}
-            <a href="{{ elm.href }}" title="{{ elm.name }}">
-                <img src="{{ elm.imgSrc }}" alt="{{ elm.name }}" title="{{ elm.name }}" />
-            </a>
-            {% endfor %}
+            <div>
+                {% for elm in project.items %}
+                <a href="{{ elm.href }}" title="{{ elm.name }}">
+                    <img src="{{ elm.imgSrc }}" alt="{{ elm.name }}" title="{{ elm.name }}" />
+                </a>
+                {% endfor %}
+            </div>
         </p>
     </li>
     {% endfor %}
