@@ -1,0 +1,17 @@
+<h4>Skill stack</h4>
+<ul>
+    {% for skill in site.data.skill %}
+    <li>
+        <p>
+            <a href="{{ skill.link }}">{{ skill.name }}</a><br>
+            <div>
+                {% for elm in skill.items %}
+                <a href="{{ elm.href }}" title="{{ elm.name }}">
+                    <img src="{{ elm.imgSrc }}" alt="{{ elm.name }}" title="{{ elm.name }}" />
+                </a>
+                {% endfor %}
+            </div>
+        </p>
+    </li>
+    {% endfor %}
+</ul>
