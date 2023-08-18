@@ -6,8 +6,10 @@ highlighter: rouge
 lsi: false
 permalink: /:title
 
-title: "ChenDaqian info"
-description: ".NET engineer<br/>dddddd<br/>"
+title: "ChenDaqian"
+description: '.NET engineer<br/>dddddd<br/>🔭 I’m now working for <a href="https://www.beisen.com/" title="CNBlogs" target="_blank">Beisen</a>.😄 I’m currently coding in C# F# and Java .<br/>💝 I like playing dark souls🔥 and road cycling🚴.'
+
+
 baseurl: "/"
 url: "https://chendaqian.github.io/" # replace by your site's url
 twitter_username: ChenDaqian
@@ -15,7 +17,7 @@ github_username:  ChenDaqian # (your name)
 accent: "#f7f7e6" # accent color for blog column
 
 author: "ChenDaqian"
-address: "haidian，Beijing"
+address: "Beijing, China"
 email: "hi.world@outlook.com"
 
 # google analytics tracking code, please change the value
