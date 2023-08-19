@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<!-- saved from url=(0061)file:///D:/Source/Repos/chendaqian.github.io/assets/test.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <title>测试 - Layui</title>
+  <link rel="stylesheet" href="./测试 - Layui_files/layui.css">
+  <script src="./测试 - Layui_files/layui.js.下载"></script>
+  <script src="./测试 - Layui_files/jquery-3.7.0.min.js.下载"></script>
+
+</head>
+
+<body>
+
+
+
+  <div class="layui-timeline">
+    <div class="layui-timeline-item">
+      <i class="layui-icon layui-timeline-axis layui-icon-face-smile"></i>
+      <div class="layui-timeline-content layui-text">
+        <div class="layui-timeline-title">2023年，Layui 情怀版本 2.8.0 发布，新官网上线，且文档全部重写并开源。</div>
+      </div>
+    </div>
+    <div class="layui-timeline-item">
+      <i class="layui-icon layui-timeline-axis layui-icon-face-cry"></i>
+      <div class="layui-timeline-content layui-text">
+        <div class="layui-timeline-title">2021年，Layui 原官网下线，此后 Layui 进入两年的低谷期。</div>
+      </div>
+    </div>
+    <div class="layui-timeline-item">
+      <i class="layui-icon layui-timeline-axis layui-icon-fire"></i>
+      <div class="layui-timeline-content layui-text">
+        <div class="layui-timeline-title">2017年，Layui 里程碑版本 2.0.0 发布，此后 Layui 进入三年的高光期。</div>
+      </div>
+    </div>
+    <div class="layui-timeline-item">
+      <i class="layui-icon layui-timeline-axis layui-icon-circle"></i>
+      <div class="layui-timeline-content layui-text">
+        <div class="layui-timeline-title">2016年，Layui 首个版本发布</div>
+      </div>
+    </div>
+    <div class="layui-timeline-item">
+      <i class="layui-icon layui-anim layui-anim-rotate layui-anim-loop layui-timeline-axis"></i>
+      <div class="layui-timeline-content layui-text">
+        <div class="layui-timeline-title">最初，Layui 在爱与期许中孵化。</div>
+      </div>
+    </div>
+  </div>
+
+
+
+  <br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <button type="button" class="layui-btn layui-btn-primary" lay-on="test-tips-photos-one">photos - 单张图片层</button>
+
+  <div id="to-top" class="to-top" title="top" style="position: fixed; right: 50px; bottom: 50px; width: 50px; height: 50px; background-color: rgb(129, 216, 207); cursor: pointer;">
+    <img src="./测试 - Layui_files/to-top.png" style="width: 48px;
+    height: 48px;" alt="top" title="top">
+  </div>
+
+  <script>
+    $(function () {
+      $(document).on('scroll', function () {
+        var $pageScrollTop = $(this).scrollTop()
+        if ($pageScrollTop > 200) {
+          $('#to-top').show()
+        } else {
+          $('#to-top').hide()
+        }
+      })
+
+
+      $('#to-top').on('click', function () {
+        $('html, body').stop().animate({
+          scrollTop: 0
+        })
+      })
+    });
+
+  </script>
+  <!-- 请勿在项目正式环境中引用该 layui.js 地址 -->
+  <script>
+    layui.use(function () {
+      var layer = layui.layer;
+      var util = layui.util;
+      // 事件
+      util.on('lay-on', {
+
+        'test-tips-photos-one': function () {
+          layer.photos({
+            photos: {
+              "title": "Photos Demo",
+              "start": 0,
+              "data": [
+                {
+                  "alt": "浩瀚宇宙",
+                  "pid": 5,
+                  "src": "https://chendaqian.github.io/images/post/recruitment.webp",
+                }
+              ]
+            },
+            hideFooter: true // 是否隐藏底部栏 --- 2.8+
+          });
+        }
+      })
+    });
+
+
+
+  </script>
+
+
+
+
+
+</body></html>

@@ -1,4 +1,4 @@
-<script type="text/javascript" src="/assets/jquery-3.7.0.min.js" />
+<script src="/assets/jquery-3.7.0.min.js" />
 
 <div id="to-top" class="to-top" title="top"
   style="position: fixed;right: 50px;bottom: 50px;width: 50px;height: 50px;background-color: rgb(129, 216, 207);cursor: pointer;">
@@ -6,16 +6,8 @@
   height: 48px;" alt="top" title="top">
 </div>
 
-<script type="text/javascript">
-  var _hmt = _hmt || [];
-  (function () {
-    var hm = document.createElement("script");
-    hm.src = "https://hm.baidu.com/hm.js?6b36e4bf2c83e6e8222e22e0e1151cd3";
-    var s = document.getElementsByTagName("script")[0];
-    s.parentNode.insertBefore(hm, s);
-  })();
-
-  (function () {
+<script>
+  $(function () {
     $(document).on('scroll', function () {
       var $pageScrollTop = $(this).scrollTop()
       if ($pageScrollTop > 200) {
@@ -23,13 +15,25 @@
       } else {
         $('#to-top').hide()
       }
-    });
+    })
+
 
     $('#to-top').on('click', function () {
       $('html, body').stop().animate({
         scrollTop: 0
       })
-    });
+    })
+  });
+
+</script>
+
+<script>
+  var _hmt = _hmt || [];
+  (function () {
+    var hm = document.createElement("script");
+    hm.src = "https://hm.baidu.com/hm.js?6b36e4bf2c83e6e8222e22e0e1151cd3";
+    var s = document.getElementsByTagName("script")[0];
+    s.parentNode.insertBefore(hm, s);
   })();
 
   console.log('\r\n          _____            _____                    _____                    _____                    _____                _____          \r\n         /\\    \\          /\\    \\                  /\\    \\                  /\\    \\                  /\\    \\              |\\    \\         \r\n        /::\\____\\        /::\\____\\                /::\\    \\                /::\\____\\                /::\\    \\             |:\\____\\        \r\n       /:::/    /       /:::/    /               /::::\\    \\              /:::/    /               /::::\\    \\            |::|   |        \r\n      /:::/    /       /:::/    /               /::::::\\    \\            /:::/    /               /::::::\\    \\           |::|   |        \r\n     /:::/    /       /:::/    /               /:::/\\:::\\    \\          /:::/    /               /:::/\\:::\\    \\          |::|   |        \r\n    /:::/    /       /:::/    /               /:::/  \\:::\\    \\        /:::/____/               /:::/__\\:::\\    \\         |::|   |        \r\n   /:::/    /       /:::/    /               /:::/    \\:::\\    \\      /::::\\    \\              /::::\\   \\:::\\    \\        |::|   |        \r\n  /:::/    /       /:::/    /      _____    /:::/    / \\:::\\    \\    /::::::\\____\\________    /::::::\\   \\:::\\    \\       |::|___|______  \r\n /:::/    /       /:::/____/      /\\    \\  /:::/    /   \\:::\\    \\  /:::/\\:::::::::::\\    \\  /:::/\\:::\\   \\:::\\    \\      /::::::::\\    \\ \r\n/:::/____/       |:::|    /      /::\\____\\/:::/____/     \\:::\\____\\/:::/  |:::::::::::\\____\\/:::/__\\:::\\   \\:::\\____\\    /::::::::::\\____\\\r\n\\:::\\    \\       |:::|____\\     /:::/    /\\:::\\    \\      \\::/    /\\::/   |::|~~~|~~~~~     \\:::\\   \\:::\\   \\::/    /   /:::/~~~~/~~      \r\n \\:::\\    \\       \\:::\\    \\   /:::/    /  \\:::\\    \\      \\/____/  \\/____|::|   |           \\:::\\   \\:::\\   \\/____/   /:::/    /         \r\n  \\:::\\    \\       \\:::\\    \\ /:::/    /    \\:::\\    \\                    |::|   |            \\:::\\   \\:::\\    \\      /:::/    /          \r\n   \\:::\\    \\       \\:::\\    /:::/    /      \\:::\\    \\                   |::|   |             \\:::\\   \\:::\\____\\    /:::/    /           \r\n    \\:::\\    \\       \\:::\\__/:::/    /        \\:::\\    \\                  |::|   |              \\:::\\   \\::/    /    \\::/    /            \r\n     \\:::\\    \\       \\::::::::/    /          \\:::\\    \\                 |::|   |               \\:::\\   \\/____/      \\/____/             \r\n      \\:::\\    \\       \\::::::/    /            \\:::\\    \\                |::|   |                \\:::\\    \\                              \r\n       \\:::\\____\\       \\::::/    /              \\:::\\____\\               \\::|   |                 \\:::\\____\\                             \r\n        \\::/    /        \\::/____/                \\::/    /                \\:|   |                  \\::/    /                             \r\n         \\/____/          ~~                       \\/____/                  \\|___|                   \\/____/                              \r\n                                                                                                                                          \r\n');
