@@ -48,13 +48,17 @@ h6 {
     font-size: 18px;
 }
 
-h1, h2 {
+h1,
+h2 {
     margin: 20px 0px 0px;
     font-family: 'Playfair Display SC', serif;
     font-weight: 500;
 }
 
-h3, h4, h5, h6 {
+h3,
+h4,
+h5,
+h6 {
     margin: 20px 0px 0px;
     font-weight: 400;
 }
@@ -70,13 +74,13 @@ a {
     cursor: pointer;
 }
 
-    a:hover {
-        color: #b21c1c;
-    }
+a:hover {
+    color: #b21c1c;
+}
 
-    a:active {
-        color: #910b0b;
-    }
+a:active {
+    color: #910b0b;
+}
 
 img {
     max-width: 100%;
@@ -94,19 +98,27 @@ li {
     margin: 0;
 }
 
-.github-icon:hover, .github-icon:focus, .github-icon:active {
+.github-icon:hover,
+.github-icon:focus,
+.github-icon:active {
     color: #85d063;
 }
 
-.twitter-icon:hover, .twitter-icon:focus, .twitter-icon:active {
+.twitter-icon:hover,
+.twitter-icon:focus,
+.twitter-icon:active {
     color: #1da0f2;
 }
 
-.mail-icon:hover, .mail-icon:focus, .mail-icon:active {
+.mail-icon:hover,
+.mail-icon:focus,
+.mail-icon:active {
     color: #db4646;
 }
 
-.rss-icon:hover, .rss-icon:focus, .rss-icon:active {
+.rss-icon:hover,
+.rss-icon:focus,
+.rss-icon:active {
     color: #f49c52;
 }
 
@@ -127,19 +139,21 @@ li {
     text-decoration: none;
 }
 
-    .btn:focus, .btn:hover {
-        background-color: rgba(0,0,0,0.1);
-    }
+.btn:focus,
+.btn:hover {
+    background-color: rgba(0, 0, 0, 0.1);
+}
 
-    .btn:active {
-        background-color: rgba(0, 0, 0, 0.2);
-    }
+.btn:active {
+    background-color: rgba(0, 0, 0, 0.2);
+}
 
-    .btn.disabled, btn:disabled {
-        background-color: transparent !important;
-        color: #b3b3b3 !important;
-        cursor: default;
-    }
+.btn.disabled,
+btn:disabled {
+    background-color: transparent !important;
+    color: #b3b3b3 !important;
+    cursor: default;
+}
 
 .post {
     margin-top: 30px;
@@ -194,7 +208,8 @@ li {
     margin-right: 5px;
 }
 
-code, kbd {
+code,
+kbd {
     background: #fff;
     border-radius: 3px;
     line-height: 16.5px;
@@ -207,4 +222,8 @@ code, kbd {
     border-top: 5px solid #db4646;
     border-bottom: 5px solid #db4646;
     border-radius: 4px;
+}
+
+.clustrmaps-widget-v2 {
+    display: none;
 }
