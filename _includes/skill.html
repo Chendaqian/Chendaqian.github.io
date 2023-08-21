@@ -6,7 +6,7 @@
             <a href="{{ skill.link }}">{{ skill.name }}</a><br>
             <div>
                 {% for elm in skill.items %}
-                <a href="{{ elm.href }}" title="{{ elm.name }}">
+                <a href="{{ elm.href }}" target="_blank" title="{{ elm.name }}">
                     <img src="{{ elm.imgSrc }}" target="_blank" alt="{{ elm.name }}" title="{{ elm.name }}" />
                 </a>
                 {% endfor %}
