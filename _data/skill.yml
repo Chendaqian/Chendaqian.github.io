@@ -3,7 +3,7 @@
     - name: CSharp
       href: 'https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/'
       imgSrc: >-
-        https://camo.githubusercontent.com/1f45455b25ab7614ee7d3d5c026629b5511a9b2a7f1cce8720a077fda9b796b6/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f2d4353686172702d2532333741303039393f7374796c653d666c61742d737175617265266c6f676f3d7368617270266c6f676f436f6c6f723d253233666666666666
+        /images/CSharp.svg
     - name: Python
       href: 'https://www.python.org/'
       imgSrc: >-
