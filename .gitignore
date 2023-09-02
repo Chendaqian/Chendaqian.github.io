@@ -2,4 +2,5 @@
 /.vs
 /_site
 /obj
+/bin
 /Web.csproj.user
