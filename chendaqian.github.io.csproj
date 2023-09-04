@@ -5,6 +5,12 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
+	  <None Remove="assets\css\topCat.css" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Compile Include="assets\css\topCat.css" />
+	</ItemGroup>
+	<ItemGroup>
 	  <None Include=".github\workflows\jekyll-gh-pages.yml" />
 	</ItemGroup>
 </Project>
