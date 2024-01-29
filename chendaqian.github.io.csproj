@@ -5,6 +5,12 @@
 		<Nullable>enable</Nullable>
 	</PropertyGroup>
 	<ItemGroup>
+	  <Compile Remove="_site\**" />
+	  <Content Remove="_site\**" />
+	  <EmbeddedResource Remove="_site\**" />
+	  <None Remove="_site\**" />
+	</ItemGroup>
+	<ItemGroup>
 	  <None Remove="assets\css\topCat.css" />
 	</ItemGroup>
 	<ItemGroup>
@@ -12,5 +18,8 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <None Include=".github\workflows\jekyll-gh-pages.yml" />
+	</ItemGroup>
+	<ItemGroup>
+	  <Folder Include="images\post\info\" />
 	</ItemGroup>
 </Project>
