@@ -19,7 +19,4 @@
 	<ItemGroup>
 	  <None Include=".github\workflows\jekyll-gh-pages.yml" />
 	</ItemGroup>
-	<ItemGroup>
-	  <Folder Include="images\post\info\" />
-	</ItemGroup>
 </Project>
