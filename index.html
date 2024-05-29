@@ -7,11 +7,14 @@ layout: default
 <div id="{{ post.date | date: "%F-%H" }}" class="unit whole align-left post">
     <article itemscope itemtype="http://schema.org/BlogPosting">
         <h2>
-            <a href="{{ post.url | relative_url }}" target="_blank" title="{{post.title}}" >{{ post.title }}</a>
+            <a href="{{ post.url | relative_url }}" target="_blank" title="{{post.title}}">{{ post.title }}</a>
             <small class="chip">{{ post.date | date: "%Y-%m-%d" }}</small>
             <a class="chip" href="#"><i class="icon ion-ios-heart"></i> LIKE</a>
             <a class="chip" href="#"><i class="icon ion-android-share-alt"></i> SHARE</a>
         </h2>
+        <div class="post-content">
+            {{ post.excerpt }}
+        </div>
     </article>
 </div>
 {% endif %}
