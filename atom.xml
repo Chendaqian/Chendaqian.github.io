@@ -15,6 +15,7 @@ title : Atom Feed
  </author>
 
  {% for post in site.posts %}
+ {% if post.isDisplay == true %}
  <entry>
    <title>{{ post.title }}</title>
    <link href="{{ site.url }}{{ site.baseurl }}#{{ post.date | date: "%F-%H" }}" />
@@ -22,5 +23,6 @@ title : Atom Feed
    <id>{{ post.id }}</id>
    <content type="html">{{ post.content | xml_escape }}</content>
  </entry>
+ {% endif %}
  {% endfor %}
 </feed>

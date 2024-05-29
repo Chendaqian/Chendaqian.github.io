@@ -1,0 +1,26 @@
+---
+layout: default
+---
+
+<div id="{{ page.date | date: "%F-%H" }}" class="unit whole align-left post">
+    <article itemscope itemtype="http://schema.org/BlogPosting">
+        <h2>
+            {{ page.title }}
+            <a class="chip" href="#"><i class="icon ion-ios-heart"></i> LIKE</a>
+            <a class="chip" href="#"><i class="icon ion-android-share-alt"></i> SHARE</a>
+        </h2>
+        <div class="post-content">
+            {{ page.content }}
+        </div>
+    </article>
+    <small class="chip">Creation date:{{ page.date | date: "%Y-%m-%d" }}</small>
+    <small class="chip">Update date: {{page.modifyTime | date: "%Y-%m-%d"}}</small>
+    {% if page.author %}
+    <span class="chip" itemprop="author" itemscope itemtype="http://schema.org/Person">
+        <span itemprop="name">Article by {{ page.author }}</span>
+    </span>
+    {% endif %}
+    <hr />
+    {% include utteranc.html %}
+</div>
+

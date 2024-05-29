@@ -30,10 +30,10 @@
       href: 'https://www.thepollyproject.org/'
       imgSrc: >-
         /images/polly.svg
-    - name: EF
-      href: 'https://learn.microsoft.com/en-us/ef/core/'
+    - name: ServiceStack
+      href: 'https://servicestack.net/'
       imgSrc: >-
-        /images/ef.svg
+        /images/servicestack.svg
     - name: MVC
       href: 'https://dotnet.microsoft.com/en-us/apps/aspnet/mvc'
       imgSrc: >-
@@ -42,10 +42,10 @@
       href: 'https://learn.microsoft.com/en-us/dotnet/api/overview/odata-dotnet/'
       imgSrc: >-
         /images/odata.svg
-    - name: ServiceStack
-      href: 'https://servicestack.net/'
+    - name: EF
+      href: 'https://learn.microsoft.com/en-us/ef/core/'
       imgSrc: >-
-        /images/servicestack.svg
+        /images/ef.svg
 - name: Data storage
   items:
     - name: Mysql
@@ -75,7 +75,7 @@
       imgSrc: >-
         /images/kafka.svg
     - name: RabbitMQ
-      href: 'www.rabbitmq.com/'
+      href: 'https://www.rabbitmq.com/'
       imgSrc: >-
         /images/rabbitmq.svg
     - name: Consul

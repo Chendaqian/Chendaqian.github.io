@@ -1,111 +1,19 @@
 <h4>Skill stack</h4>
+
+
 <ul>
-
+    {% for skill in site.data.skill %}
     <li>
-        <p><a href="">Dev language</a><br></p>
-        <div>
-            <a href="https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/" target="_blank" title="CSharp">
-                <img src="/images/csharp.svg" target="_blank" alt="CSharp" title="CSharp">
-            </a>
-            <a href="https://www.python.org/" target="_blank" title="Python">
-                <img src="/images/python.svg" target="_blank" alt="Python" title="Python">
-            </a>
-            <a href="https://www.java.com/" target="_blank" title="Java">
-                <img src="/images/java.svg" target="_blank" alt="Java" title="Java">
-            </a>
-            <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript" target="_blank" title="JavaScript">
-                <img src="/images/js.svg" target="_blank" alt="JavaScript" title="JavaScript">
-            </a>
-        </div>
+        <p>
+            <a href="{{ skill.link }}">{{ skill.name }}</a><br>
+            <div>
+                {% for elm in skill.items %}
+                <a href="{{ elm.href }}" title="{{ elm.name }}">
+                    <img src="{{ elm.imgSrc }}" target="_blank" alt="{{ elm.name }}" title="{{ elm.name }}" />
+                </a>
+                {% endfor %}
+            </div>
+        </p>
     </li>
-    <li>
-        <p><a href="">Middleware</a><br></p>
-        <div>
-            <a href="https://learn.microsoft.com/en-us/dotnet/framework/wcf/whats-wcf" target="_blank" title="WCF">
-                <img src="/images/wcf.svg" target="_blank" alt="WCF" title="WCF">
-            </a>
-            <a href="https://autofac.org/" target="_blank" title="Autofac">
-                <img src="/images/autofac.svg" target="_blank" alt="Autofac" title="Autofac">
-            </a>
-            <a href="https://www.thepollyproject.org/" target="_blank" title="Polly">
-                <img src="/images/polly.svg" target="_blank" alt="Polly" title="Polly">
-            </a>
-            <a href="https://servicestack.net/" target="_blank" title="ServiceStack">
-                <img src="/images/servicestack.svg" target="_blank" alt="ServiceStack" title="ServiceStack">
-            </a>
-            <a href="https://dotnet.microsoft.com/en-us/apps/aspnet/mvc" target="_blank" title="MVC">
-                <img src="/images/mvc.svg" target="_blank" alt="MVC" title="MVC">
-            </a>
-            <a href="https://learn.microsoft.com/en-us/dotnet/api/overview/odata-dotnet/" target="_blank" title="OData">
-                <img src="/images/odata.svg" target="_blank" alt="OData" title="OData">
-            </a>
-            <a href="https://learn.microsoft.com/en-us/ef/core/" target="_blank" title="EF">
-                <img src="/images/ef.svg" target="_blank" alt="EF" title="EF">
-            </a>
-        </div>
-    </li>
-    <li>
-        <p><a href="">Data storage</a><br></p>
-        <div>
-            <a href="https://www.mysql.com/com/" target="_blank" title="Mysql">
-                <img src="/images/mysql.svg" target="_blank" alt="Mysql" title="Mysql">
-            </a>
-            <a href="https://www.postgresql.org/" target="_blank" title="PostgreSQL">
-                <img src="/images/pgsql.svg" target="_blank" alt="PostgreSQL" title="PostgreSQL">
-            </a>
-            <a href="https://cassandra.apache.org/" target="_blank" title="Cassandra">
-                <img src="/images/cassandra.svg" target="_blank" alt="Cassandra" title="Cassandra">
-            </a>
-            <a href="https://redis.io/" target="_blank" title="Redis">
-                <img src="/images/redis.svg" target="_blank" alt="Redis" title="Redis">
-            </a>
-        </div>
-    </li>
-    <li>
-        <p><a href="">Microservices</a><br></p>
-        <div>
-
-            <a href="https://www.elastic.co" target="_blank" title="ElasticStack">
-                <img src="/images/elasticstack.svg" target="_blank" alt="ElasticStack" title="ElasticStack">
-            </a>
-            <a href="https://kafka.apache.org/" target="_blank" title="Kafka">
-                <img src="/images/kafka.svg" target="_blank" alt="Kafka" title="Kafka">
-            </a>
-            <a href="www.rabbitmq.com/" target="_blank" title="RabbitMQ">
-                <img src="/images/rabbitmq.svg" target="_blank" alt="RabbitMQ" title="RabbitMQ">
-            </a>
-            <a href="https://www.consul.io/" target="_blank" title="Consul">
-                <img src="/images/consul.svg" target="_blank" alt="Consul" title="Consul">
-            </a>
-        </div>
-    </li>
-    <li>
-        <p><a href="">Dev tools</a><br></p>
-        <div>
-            <a href="https://visualstudio.microsoft.com" target="_blank" title="VisualStudio">
-                <img src="/images/visualstudio.svg" target="_blank" alt="VisualStudio" title="VisualStudio">
-            </a>
-            <a href="https://code.visualstudio.com/" target="_blank" title="VSCode">
-                <img src="/images/vscode.svg" target="_blank" alt="VSCode" title="VSCode">
-            </a>
-            <a href="https://git-scm.com/" target="_blank" title="Git">
-                <img src="/images/git.svg" target="_blank" alt="Git" title="Git">
-            </a>
-            <a href="https://www.jetbrains.com/resharper/" target="_blank" title="Resharper">
-                <img src="/images/resharper.svg" target="_blank" alt="Resharper" title="Resharper">
-            </a>
-            <a href="https://www.jetbrains.com/datagrip/" target="_blank" title="Datagrip">
-                <img src="/images/datagrip.svg" target="_blank" alt="Datagrip" title="Datagrip">
-            </a>
-            <a href="https://www.jetbrains.com/profiler/" target="_blank" title="dotTrace">
-                <img src="/images/dottrace.svg" target="_blank" alt="dotTrace" title="dotTrace">
-            </a>
-            <a href="https://mobaxterm.mobatek.net/" target="_blank" title="Mobaxterm">
-                <img src="/images/mobaxterm.svg" target="_blank" alt="Mobaxterm" title="Mobaxterm">
-            </a>
-            <a href="https://www.linqpad.net/" target="_blank" title="LINQPad">
-                <img src="/images/linqpad.svg" target="_blank" alt="LINQPad" title="LINQPad">
-            </a>
-        </div>
-    </li>
+    {% endfor %}
 </ul>
