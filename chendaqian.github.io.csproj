@@ -18,5 +18,10 @@
 	</ItemGroup>
 	<ItemGroup>
 	  <None Include=".github\workflows\jekyll-gh-pages.yml" />
+	  <None Include=".jekyll-cache\.gitignore" />
+	  <None Include=".jekyll-cache\Jekyll\Cache\Jekyll--Cache\b7\9606fb3afea5bd1609ed40b622142f1c98125abcfe89a76a661b0e8e343910" />
+	  <None Include=".jekyll-cache\Jekyll\Cache\Jekyll--Converters--Markdown\4c\c85e9f4a0af1a19f0e52fdff739a2639a91c6326b99dc68197cd6bfa0f2021" />
+	  <None Include=".jekyll-cache\Jekyll\Cache\Jekyll--Converters--Markdown\5f\171d7db2cff52f16e2e931a73c9059cd467765236bf5d6603e5cacf1541620" />
+	  <None Include=".jekyll-cache\Jekyll\Cache\Jekyll--Converters--Markdown\c8\e26a0c25fe108a180869c60baa16831518492ceb04ff4e60d4bf10e2e1fe0b" />
 	</ItemGroup>
 </Project>
