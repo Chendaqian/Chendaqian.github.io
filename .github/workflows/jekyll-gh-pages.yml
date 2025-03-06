@@ -41,7 +41,7 @@ jobs:
           key: ${{ runner.os }}-ruby-${{ hashFiles('**/Gemfile.lock') }}
 
       - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v2  # 升级构建工具
+        uses: actions/jekyll-build-pages@v1  # 升级构建工具
         with:
           source: ./
           destination: ./_site
