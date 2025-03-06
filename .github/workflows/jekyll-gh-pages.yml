@@ -48,14 +48,26 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3  # 升级至最新版
 
-  # Deployment job
   deploy:
-    environment:
-      name: github-pages
-      url: ${{ steps.deployment.outputs.page_url }}
+    name: GitHub Pages Deployment
     runs-on: ubuntu-latest
     needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+      contents: read
     steps:
+      - name: Deploy
+        id: deploy
+        uses: actions/deploy-pages@v3
+        with:
+          artifact-name: jekyll-site-package  # 与上传名称严格匹配
+          target-branch: gh-pages  # 显式指定目标分支
+          clean: true
+
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v3
