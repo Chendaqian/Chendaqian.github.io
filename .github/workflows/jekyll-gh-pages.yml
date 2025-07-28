@@ -1,4 +1,4 @@
-name: Deploy Jekyll with GitHub Pages dependencies preinstalled
+name: Deploy Jekyll site to GitHub Pages
 
 on:
   push:
@@ -19,19 +19,27 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
-        uses: actions/checkout@v4  # 更新到最新版本
+        uses: actions/checkout@v4
         
-      - name: Setup Pages
-        uses: actions/configure-pages@v4  # 更新到最新版本
+      - name: Setup Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'  # 使用你需要的Ruby版本
+          bundler-cache: true
+          
+      - name: Install dependencies
+        run: bundle install
         
       - name: Build with Jekyll
-        uses: actions/jekyll-build-pages@v2  # 更新到最新版本
-        with:
-          source: ./
-          destination: ./_site
-          
+        run: bundle exec jekyll build --destination ./_site
+        
+      - name: Setup Pages
+        uses: actions/configure-pages@v4
+        
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3  # 更新到最新版本
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: ./_site
 
   deploy:
     environment:
@@ -42,4 +50,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4  # 更新到最新版本
+        uses: actions/deploy-pages@v4
