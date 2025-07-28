@@ -1,0 +1,591 @@
+﻿<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>开启新生活</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Microsoft YaHei', 'Segoe UI', 'PingFang SC', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(135deg, #ffeff0, #fff9fc);
+            overflow: hidden;
+            position: relative;
+        }
+
+        /* 背景动态心形 */
+        .heart-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .heart {
+            position: absolute;
+            top: 100%;
+            opacity: 0.8;
+            filter: blur(1px);
+            animation: float linear infinite;
+            z-index: 1;
+        }
+
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            left: 12px;
+            top: 0;
+            width: 12px;
+            height: 20px;
+            background: currentColor;
+            border-radius: 12px 12px 0 0;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+
+        .heart::after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+
+        .heart.pink {
+            color: #ff90bc;
+            width: 24px;
+            height: 24px;
+        }
+
+        .heart.pink::before,
+        .heart.pink::after {
+            background: #ff90bc;
+        }
+
+        .heart.red {
+            color: #ff6b6b;
+            width: 30px;
+            height: 30px;
+        }
+
+        .heart.red::before,
+        .heart.red::after {
+            background: #ff6b6b;
+        }
+
+        .heart.purple {
+            color: #c780f0;
+            width: 22px;
+            height: 22px;
+        }
+
+        .heart.purple::before,
+        .heart.purple::after {
+            background: #c780f0;
+        }
+
+        @keyframes float {
+            to {
+                transform: translateY(-100vh);
+            }
+        }
+
+        .container {
+            text-align: center;
+            padding: 45px;
+            background: rgba(255, 255, 255, 0.88);
+            border-radius: 20px;
+            box-shadow: 0 12px 40px rgba(255, 150, 170, 0.2);
+            max-width: 800px;
+            width: 90%;
+            position: relative;
+            z-index: 10;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            transition: all 0.4s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 45px rgba(255, 150, 170, 0.3);
+        }
+
+        /* 顶部头像容器 */
+        .top-avatars {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 30px;
+            animation: fadeIn 1s ease-out 0.5s forwards;
+            opacity: 0;
+        }
+
+        .avatar {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            border: 4px solid #fff;
+            box-shadow: 0 8px 20px rgba(255, 120, 150, 0.3);
+            overflow: hidden;
+            position: relative;
+            transition: all 0.3s ease;
+            animation: floatLeftRight 6s ease-in-out infinite;
+        }
+
+        .avatar:nth-child(1) {
+            animation-delay: 0s;
+        }
+
+        .avatar:nth-child(2) {
+            animation-delay: 1.5s;
+        }
+
+        .avatar:hover {
+            transform: scale(1.05);
+            box-shadow: 0 10px 25px rgba(255, 120, 150, 0.4);
+        }
+
+        .avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .main-title {
+            font-size: 3.5rem;
+            margin-bottom: 40px;
+            position: relative;
+            letter-spacing: 3px;
+            text-shadow: 0 4px 12px rgba(255, 120, 150, 0.2);
+            color: #ff6b6b;
+        }
+
+        @keyframes textAppear {
+            0% {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            100% {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes heartBeat {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.15); }
+        }
+
+        @keyframes textColorChange {
+            0% { color: #ff6b6b; }
+            25% { color: #ff90bc; }
+            50% { color: #ff7aa2; }
+            75% { color: #ff9ec6; }
+            100% { color: #ff6b6b; }
+        }
+
+        .main-title span {
+            display: inline-block;
+            position: relative;
+            opacity: 0;
+            animation:
+                textAppear 0.8s ease-out forwards,
+                heartBeat 2.5s ease-in-out infinite 1s,
+                textColorChange 8s ease-in-out infinite;
+            animation-delay: calc(var(--delay) * 0.12s), 1.5s, 0s;
+            margin: 0 1px;
+        }
+
+        /* 文字下方添加小心形 */
+        .main-title span::after {
+            content: '';
+            position: absolute;
+            width: 10px;
+            height: 10px;
+            opacity: 0;
+            background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23ff6b6b'%3E%3Cpath d='M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z'/%3E%3C/svg%3E");
+            background-size: contain;
+            background-repeat: no-repeat;
+            left: 50%;
+            top: 100%;
+            transform: translateX(-50%);
+            animation:
+                heartFloat 3s ease-in-out infinite 1.5s,
+                heartPulse 1.5s ease-in-out infinite 1.5s;
+        }
+
+        @keyframes heartFloat {
+            0% {
+                opacity: 0;
+                transform: translate(-50%, 0) scale(0.7);
+            }
+            40% {
+                opacity: 1;
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -50px) scale(0.5);
+            }
+        }
+
+        @keyframes heartPulse {
+            0%, 100% {
+                opacity: 0.8;
+                transform: translateX(-50%) scale(0.9);
+            }
+            50% {
+                opacity: 1;
+                transform: translateX(-50%) scale(1.05);
+            }
+        }
+
+        /* 左右滑动动画 */
+        @keyframes floatLeftRight {
+            0%, 100% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(-15px);
+            }
+            75% {
+                transform: translateX(15px);
+            }
+        }
+
+        .date-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 50px;
+            position: relative;
+        }
+
+        .date-line {
+            height: 1px;
+            width: 100px;
+            background: linear-gradient(to right, transparent, #ff9ec6, transparent);
+            margin: 15px 0;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .date-line::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -60px;
+            width: 20px;
+            height: 100%;
+            background: linear-gradient(to right, rgba(255,255,255,0), rgba(255, 255, 255, 0.9), rgba(255,255,255,0));
+            animation: shine 3s linear infinite;
+        }
+
+        @keyframes shine {
+            0% { left: -60px; }
+            70% { left: -60px; }
+            100% { left: 140px; }
+        }
+
+        .date {
+            font-size: 1.8rem;
+            color: #6a6a6a;
+            font-weight: 300;
+            letter-spacing: 1px;
+            animation: fadeIn 1s ease-out 1.8s forwards;
+            opacity: 0;
+            text-shadow: 0 0 8px rgba(255, 150, 170, 0.1);
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .center-heart {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 30px;
+            height: 30px;
+            color: #ff6b6b;
+            animation:
+                heartBeat 1.5s ease-in-out infinite,
+                rotateHeart 8s linear infinite;
+            z-index: 5;
+        }
+
+        .center-heart::before,
+        .center-heart::after {
+            content: '';
+            position: absolute;
+            left: 15px;
+            top: 0;
+            width: 15px;
+            height: 25px;
+            background: currentColor;
+            border-radius: 15px 15px 0 0;
+            transform: rotate(-45deg);
+            transform-origin: 0 100%;
+        }
+
+        .center-heart::after {
+            left: 0;
+            transform: rotate(45deg);
+            transform-origin: 100% 100%;
+        }
+
+        @keyframes rotateHeart {
+            0% { transform: translate(-50%, -50%) rotate(0); }
+            100% { transform: translate(-50%, -50%) rotate(360deg); }
+        }
+
+        /* 底部头像容器 */
+        .bottom-avatars {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+            animation: fadeIn 1s ease-out 2s forwards;
+            opacity: 0;
+        }
+
+        .small-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            border: 3px solid #fff;
+            box-shadow: 0 5px 15px rgba(255, 120, 150, 0.25);
+            overflow: hidden;
+            transition: all 0.3s ease;
+            animation: floatLeftRight 7s ease-in-out infinite;
+        }
+
+        .small-avatar:nth-child(1) { animation-delay: 0s; }
+        .small-avatar:nth-child(2) { animation-delay: 0.5s; }
+        .small-avatar:nth-child(3) { animation-delay: 1s; }
+        .small-avatar:nth-child(4) { animation-delay: 1.5s; }
+
+        .small-avatar:hover {
+            transform: scale(1.08);
+            box-shadow: 0 8px 20px rgba(255, 120, 150, 0.35);
+        }
+
+        .small-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .footer {
+            position: absolute;
+            bottom: 30px;
+            width: 100%;
+            text-align: center;
+            color: #999;
+            font-size: 1rem;
+            letter-spacing: 1px;
+            z-index: 10;
+            animation: fadeIn 1.2s ease-out 2.2s forwards;
+            opacity: 0;
+        }
+
+        @media (max-width: 768px) {
+            .main-title {
+                font-size: 2.7rem;
+            }
+
+            .date {
+                font-size: 1.5rem;
+            }
+
+            .date-line {
+                width: 70px;
+            }
+
+            .container {
+                padding: 30px 20px;
+            }
+
+            .avatar {
+                width: 100px;
+                height: 100px;
+            }
+
+            .small-avatar {
+                width: 70px;
+                height: 70px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-title {
+                font-size: 2.2rem;
+            }
+
+            .date {
+                font-size: 1.3rem;
+            }
+
+            .date-line {
+                width: 50px;
+            }
+
+            .footer {
+                font-size: 0.9rem;
+                bottom: 15px;
+            }
+
+            .top-avatars {
+                gap: 20px;
+            }
+
+            .avatar {
+                width: 80px;
+                height: 80px;
+            }
+
+            .bottom-avatars {
+                gap: 15px;
+            }
+
+            .small-avatar {
+                width: 60px;
+                height: 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- 背景心形漂浮层 -->
+    <div class="heart-background" id="heartBackground"></div>
+
+    <div class="container">
+        <!-- 顶部两个圆形头像 -->
+        <div class="top-avatars">
+            <div class="avatar">
+                <img src="./content/imsages/gege.jpg" alt="哥哥">
+            </div>
+            <div class="avatar">
+                <img src="./content/imsages/baobao.jpg" alt="宝宝">
+            </div>
+        </div>
+
+        <h1 class="main-title">
+            <span style="--delay:3">我</span>
+            <span style="--delay:4">们</span>
+            <span style="--delay:5">的</span>
+            <span style="--delay:6">新</span>
+            <span style="--delay:7">生</span>
+            <span style="--delay:8">活</span>
+        </h1>
+
+        <div class="date-container">
+            <div class="date-line"></div>
+            <div class="center-heart"></div>
+            <p class="date">2025年7月29日</p>
+            <p class="date">北京·回龙观</p>
+            <div class="date-line"></div>
+        </div>
+
+        <!-- 底部四个圆形头像 -->
+        <div class="bottom-avatars">
+            <div class="small-avatar">
+                <img src="./content/imsages/caibao.jpg" alt="财宝">
+            </div>
+            <div class="small-avatar">
+                <img src="./content/imsages/fubao.jpg" alt="福宝">
+            </div>
+            <div class="small-avatar">
+                <img src="./content/imsages/kele.jpg" alt="可乐">
+            </div>
+            <div class="small-avatar">
+                <img src="./content/imsages/mengmeng.jpg" alt="萌萌">
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>心的约定 · 新的开始</p>
+    </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const heartBackground = document.getElementById('heartBackground');
+
+            // 创建随机心形
+            function createHeart() {
+                const heart = document.createElement('div');
+                const types = ['pink', 'red', 'purple'];
+                const type = types[Math.floor(Math.random() * types.length)];
+
+                heart.classList.add('heart', type);
+
+                // 随机位置与大小
+                const left = Math.random() * 100;
+                const size = 0.6 + Math.random() * 0.7;
+                const duration = 15 + Math.random() * 25;
+
+                heart.style.left = `${left}%`;
+                heart.style.opacity = 0.4 + Math.random() * 0.4;
+                heart.style.animationDuration = `${duration}s`;
+                heart.style.animationDelay = `${Math.random() * 5}s`;
+                heart.style.transform = `scale(${size})`;
+
+                heartBackground.appendChild(heart);
+
+                // 移除超出屏幕的心形
+                setTimeout(() => {
+                    heart.remove();
+                }, duration * 1000);
+            }
+
+            // 初始创建多个心形
+            for (let i = 0; i < 30; i++) {
+                setTimeout(() => {
+                    createHeart();
+                }, Math.random() * 3000);
+            }
+
+            // 定时创建新心形
+            setInterval(() => {
+                createHeart();
+            }, 800);
+
+            // 点击页面添加大心形效果
+            document.addEventListener('click', (e) => {
+                const heart = document.createElement('div');
+                heart.classList.add('heart', 'red');
+
+                const size = 1.8 + Math.random() * 0.8;
+                const duration = 12;
+
+                heart.style.left = `${e.pageX}px`;
+                heart.style.top = `${e.pageY}px`;
+                heart.style.opacity = 0.9;
+                heart.style.animationDuration = `${duration}s`;
+                heart.style.transform = `scale(${size})`;
+                heart.style.filter = 'blur(2px)';
+
+                heartBackground.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, duration * 1000);
+            });
+        });
+    </script>
+</body>
+</html>
