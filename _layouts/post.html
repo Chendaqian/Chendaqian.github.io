@@ -23,4 +23,36 @@ layout: default
     <hr />
     {% include utteranc.html %}
 </div>
+<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.min.js"></script>
+<script type="text/javascript">
+    (function () {
+        var mermaidCodeBlocks = document.querySelectorAll('pre code.language-mermaid, pre code.lang-mermaid, code.language-mermaid, code.lang-mermaid');
+        if (!mermaidCodeBlocks || mermaidCodeBlocks.length === 0) return;
+
+        for (var i = 0; i < mermaidCodeBlocks.length; i++) {
+            var codeElement = mermaidCodeBlocks[i];
+            var rawText = codeElement.textContent || '';
+            var mermaidContainer = document.createElement('div');
+            mermaidContainer.className = 'mermaid';
+            mermaidContainer.textContent = rawText;
+
+            var preElement = codeElement.closest('pre');
+            if (preElement && preElement.parentNode) {
+                var wrapper = preElement.parentElement;
+                if (wrapper && wrapper.classList.contains('highlight') && wrapper.parentNode) {
+                    wrapper.parentNode.replaceChild(mermaidContainer, wrapper);
+                } else {
+                    preElement.parentNode.replaceChild(mermaidContainer, preElement);
+                }
+            } else if (codeElement.parentNode) {
+                codeElement.parentNode.replaceChild(mermaidContainer, codeElement);
+            }
+        }
+
+        mermaid.initialize({
+            startOnLoad: true,
+            securityLevel: 'loose'
+        });
+    })();
+</script>
 
