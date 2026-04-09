@@ -205,6 +205,56 @@ public Validation Build(Type type)
 
 表达式树构建后的代码
 ```csharp
+.Lambda #Lambda1<ValidationDemo.Validation>(System.Object $model) {
+    .Block(ValidationDemo.Result $result) {
+        .Block() {
+            .Block() {
+                .Block() {
+                    .If (
+                        .IsFalse(.Call .Constant<ValidationDemo.StringLengthExAttribute>(ValidationDemo.StringLengthExAttribute).IsValid((System.Object)((ValidationDemo.IUserProfile)$model).Name)
+                        )
+                    ) {
+                        .Return #Label1 { .Call ValidationDemo.Result.Failure(.New ValidationDemo.FieldException(
+                                "Name",
+                                "姓名长度不能超过10")) }
+                    } .Else {
+                        .Default(System.Void)
+                    }
+                };
+                .Block() {
+                    .If (
+                        .IsFalse(.Call .Constant<ValidationDemo.StringLengthExAttribute>(ValidationDemo.StringLengthExAttribute).IsValid((System.Object)((ValidationDemo.IUserProfile)$model).EnglishName)
+                        )
+                    ) {
+                        .Return #Label1 { .Call ValidationDemo.Result.Failure(.New ValidationDemo.FieldException(
+                                "EnglishName",
+                                "英文名长度不能超过8")) }
+                    } .Else {
+                        .Default(System.Void)
+                    }
+                };
+                .Block() {
+                    .If (
+                        .IsFalse(.Call .Constant<ValidationDemo.StringLengthExAttribute>(ValidationDemo.StringLengthExAttribute).IsValid((System.Object)((ValidationDemo.IUserProfile)$model).Position)
+                        )
+                    ) {
+                        .Return #Label1 { .Call ValidationDemo.Result.Failure(.New ValidationDemo.FieldException(
+                                "Position",
+                                "职位长度不能超过20")) }
+                    } .Else {
+                        .Default(System.Void)
+                    }
+                }
+            }
+        };
+        .Return #Label1 { .Call ValidationDemo.Result.Success() };
+        .Label
+            $result
+        .LabelTarget #Label1:
+    }
+}
+
+
 Result result;
 if (!StringLengthExAttribute.IsValid(((IUserProfile)model).Name))
 {
