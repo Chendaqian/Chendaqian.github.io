@@ -4,3 +4,5 @@
 /obj
 /bin
 /Web.csproj.user
+/logs/*.log
+/.claude
