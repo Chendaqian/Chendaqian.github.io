@@ -11,10 +11,8 @@
 	  <None Remove="_site\**" />
 	</ItemGroup>
 	<ItemGroup>
-	  <None Remove="assets\css\topCat.css" />
 	</ItemGroup>
 	<ItemGroup>
-	  <Compile Include="assets\css\topCat.css" />
 	  <Compile Include="tree\rong\newStart\index.html" />
 	</ItemGroup>
 	<ItemGroup>

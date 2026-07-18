@@ -3,13 +3,21 @@
 
 {% include head.html %}
 
-<body class="wrap wider" style="background-color: #f5f1f1">
+<body class="wrap wider{% if page.layout == 'post' %} post-page{% endif %}" style="background-color: #f5f1f1">
+    <div class="fixed-controls" id="fixed-controls">
+        <button id="sidebar-toggle" class="ctrl-btn" title="切换侧边栏"><i class="icon ion-navicon-round"></i></button>
+        <a href="/" class="ctrl-btn" title="返回首页"><i class="icon ion-ios-home"></i></a>
+        {% if page.layout == 'post' %}
+        <button id="toc-toggle" class="ctrl-btn" title="文章目录"><i class="icon ion-ios-list"></i></button>
+        {% endif %}
+        <button id="back-to-top" class="ctrl-btn" title="返回顶部"><i class="icon ion-ios-arrow-up"></i></button>
+    </div>
     <div class="grid">
         <div id="/home" class="unit one-third">
             <div class="grid">
                 <div class="unit whole" id="/home">
                     <a href="/">
-                        <img class="avatar" width="150" height="103" src="/images/mc.gif" alt="profile picture" _mstalt="266110" style="display: flex;margin: 0 auto;border-radius: 50%;border: 1px solid #4f5378;">
+                        <img class="avatar" width="150" height="103" src="/images/mc.gif" alt="profile picture">
                     </a>
                     <h1><a href="/">&nbsp;&nbsp;&nbsp;&nbsp;{{ site.title }}</a></h1>
                     <p>
@@ -24,7 +32,8 @@
                     <img src="/images/code.svg" alt="Typing SVG" title="Code changes the world">
                 </div>
                 <div class="unit whole" id="/contact">
-                    <a href="https://www.cnblogs.com/{{ site.cnblog_username }}/" class="btn" title="CNBlogs" target="_blank"><i class="icon ion-ios-paw"></i></a>
+                    <a href="/" class="btn" title="Home"><i class="icon ion-ios-home"></i></a>
+                    <a href="https://www.cnblogs.com/{{ site.cnblog_username }}/" class="btn cnblogs-icon" title="CNBlogs" target="_blank"><i></i></a>
                     <a href="https://github.com/{{ site.github_username }}" target="_blank" title="Github" class="github-icon btn"><i class="icon ion-social-github"></i></a>
                     <a href="mailto:{{ site.email }}" class="mail-icon btn"><i class="icon ion-email"></i></a>
                     <a href="feed.xml" class="rss-icon btn" target="_blank" title="RSS"><i class="icon ion-social-rss"></i></a>
@@ -53,27 +62,176 @@
         </div>
     </div>
     {% include foot.html %}
-    <div class="back-to-top cd-top faa-float animated cd-is-visible" style="top: -999px;"></div>
-    <!-- 悬挂的喵 -->
+    {% if page.layout == 'post' %}
+    <div id="toc-panel" class="toc-panel">
+        <div class="toc-header">目录<button id="toc-close" class="toc-close">&times;</button></div>
+        <nav id="toc-content"></nav>
+    </div>
+    {% endif %}
     <script>
-        $(function () {
-            $(window).scroll(function () {
-                var scroHei = $(window).scrollTop();// 滚动的高度
-                if (scroHei > 350) {
-                    $('.back-to-top').css('top', '-300px');
-                    // $('.back-to-top').fadeIn();
-                } else {
-                    $('.back-to-top').css('top', '-999px');
-                    // $('.back-to-top').fadeOut();
+        (function () {
+            // 表格圆角 wrapper
+            var tables = document.querySelectorAll('.post-content table');
+            for (var ti = 0; ti < tables.length; ti++) {
+                var t = tables[ti];
+                if (t.parentNode.classList.contains('table-wrapper')) continue;
+                var w = document.createElement('div');
+                w.className = 'table-wrapper';
+                t.parentNode.insertBefore(w, t);
+                w.appendChild(t);
+            }
+
+            var isPostPage = document.body.classList.contains('post-page');
+            if (isPostPage) document.body.classList.add('sidebar-collapsed');
+
+            document.getElementById('sidebar-toggle').addEventListener('click', function () {
+                document.body.classList.toggle('sidebar-collapsed');
+            });
+
+            // TOC
+            var tocToggle = document.getElementById('toc-toggle');
+            var tocPanel = document.getElementById('toc-panel');
+            if (tocToggle && tocPanel) {
+                var postContent = document.querySelector('.post-content');
+                if (postContent) {
+                    var headings = postContent.querySelectorAll('h1, h2, h3, h4');
+                    var tocHtml = '';
+                    headings.forEach(function (h, i) {
+                        var id = 'toc-' + i;
+                        h.id = id;
+                        tocHtml += '<a class="toc-' + h.tagName.toLowerCase() + '" href="#' + id + '">' + h.textContent + '</a>';
+                    });
+                    document.getElementById('toc-content').innerHTML = tocHtml || '<span class="toc-empty">无标题</span>';
                 }
-            })
-            /*点击返回顶部*/
-            $('.back-to-top').click(function () {
-                $('body,html').animate({
-                    scrollTop: 0
-                }, 600);
-            })
-        })
+                tocToggle.addEventListener('click', function () {
+                    tocPanel.classList.toggle('visible');
+                    if (tocPanel.classList.contains('visible')) {
+                        localStorage.removeItem('toc-closed');
+                    }
+                });
+                tocPanel.addEventListener('click', function (e) {
+                    if (e.target.tagName === 'A') tocPanel.classList.remove('visible');
+                });
+                document.getElementById('toc-close').addEventListener('click', function () {
+                    tocPanel.classList.remove('visible');
+                    localStorage.setItem('toc-closed', '1');
+                });
+
+                // 默认自动展示，除非上次手动关闭
+                if (!localStorage.getItem('toc-closed')) {
+                    tocPanel.classList.add('visible');
+                }
+
+                // 恢复位置
+                var saved = localStorage.getItem('toc-pos');
+                if (saved) {
+                    var p = saved.split(',');
+                    tocPanel.style.top = p[0] + 'px';
+                    tocPanel.style.right = p[1] + 'px';
+                }
+
+                // 拖动
+                var header = tocPanel.querySelector('.toc-header');
+                var dragging = false, startX, startY, startTop, startRight;
+                header.addEventListener('mousedown', function (e) {
+                    dragging = true;
+                    startX = e.clientX;
+                    startY = e.clientY;
+                    startTop = parseInt(tocPanel.style.top) || tocPanel.offsetTop;
+                    startRight = parseInt(tocPanel.style.right) || 16;
+                    e.preventDefault();
+                });
+                document.addEventListener('mousemove', function (e) {
+                    if (!dragging) return;
+                    tocPanel.style.top = (startTop + e.clientY - startY) + 'px';
+                    tocPanel.style.right = (startRight - (e.clientX - startX)) + 'px';
+                });
+                document.addEventListener('mouseup', function () {
+                    if (!dragging) return;
+                    dragging = false;
+                    localStorage.setItem('toc-pos', parseInt(tocPanel.style.top) + ',' + parseInt(tocPanel.style.right));
+                });
+            }
+
+            // 返回顶部
+            var backBtn = document.getElementById('back-to-top');
+            window.addEventListener('scroll', function () {
+                backBtn.classList.toggle('visible', window.scrollY > 400);
+            });
+            backBtn.addEventListener('click', function () {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // 代码块增强
+            var blocks = document.querySelectorAll('.highlighter-rouge');
+            for (var ci = 0; ci < blocks.length; ci++) {
+                (function () {
+                var rouge = blocks[ci];
+                if (rouge.parentNode.classList.contains('code-block')) return;
+                var hl = rouge.querySelector('.highlight');
+                var pre = hl ? hl.querySelector('pre') : null;
+                var code = pre ? pre.querySelector('code') : null;
+                if (!code) return;
+
+                var lang = '';
+                var cls = rouge.className.match(/language-(\w+)/);
+                if (cls) lang = cls[1];
+
+                // 行号（不改动 code.innerHTML，避免破坏语法高亮）
+                var totalLines = (code.textContent.match(/\n/g) || []).length + 1;
+                var nums = '';
+                for (var li = 1; li <= totalLines; li++) {
+                    nums += '<span>' + li + '</span>';
+                }
+
+                // 包装
+                var block = document.createElement('div');
+                block.className = 'code-block';
+                block.innerHTML = '<div class="code-toolbar"><div class="code-dots"><span class="code-dot red"></span><span class="code-dot yellow"></span><span class="code-dot green"></span></div><span class="code-lang">' + (lang || 'code') + '</span><div class="code-actions"><button class="btn-copy">复制</button><button class="btn-fold">折叠</button></div></div>';
+                var body = document.createElement('div');
+                body.className = 'code-body';
+                var numsDiv = document.createElement('div');
+                numsDiv.className = 'line-nums';
+                numsDiv.innerHTML = nums;
+                body.appendChild(numsDiv);
+                rouge.parentNode.insertBefore(block, rouge);
+                block.appendChild(body);
+                body.appendChild(rouge);
+
+                // 滚动同步
+                pre.addEventListener('scroll', function () {
+                    numsDiv.scrollTop = pre.scrollTop;
+                });
+
+                // 复制
+                block.querySelector('.btn-copy').addEventListener('click', function () {
+                    var b = this.closest('.code-block');
+                    var raw = b.querySelector('code').textContent || '';
+                    var btn = this;
+                    if (navigator.clipboard) {
+                        navigator.clipboard.writeText(raw).then(function () {
+                            btn.textContent = '已复制!';
+                            setTimeout(function () { btn.textContent = '复制'; }, 1500);
+                        });
+                    } else {
+                        var ta = document.createElement('textarea');
+                        ta.value = raw; ta.style.position = 'fixed'; ta.style.left = '-9999px';
+                        document.body.appendChild(ta); ta.select();
+                        document.execCommand('copy'); document.body.removeChild(ta);
+                        btn.textContent = '已复制!';
+                        setTimeout(function () { btn.textContent = '复制'; }, 1500);
+                    }
+                });
+
+                // 折叠
+                block.querySelector('.btn-fold').addEventListener('click', function () {
+                    var b = this.closest('.code-block');
+                    b.classList.toggle('folded');
+                    this.textContent = b.classList.contains('folded') ? '展开' : '折叠';
+                });
+                })();
+            }
+        })();
     </script>
 </body>
 </html>

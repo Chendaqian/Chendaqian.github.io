@@ -11,9 +11,6 @@ excerpt: >-
 
 ---
 
-
-# PowerShell 7 美化
-
 在Windows开发环境中，PowerShell 7作为新一代命令行工具，凭借其强大的功能和跨平台支持，已成为开发者的首选。本文将手把手教你安装PowerShell 7，并通过自定义profile文件应用美化配置，让你的终端界面焕然一新，同时提升操作效率。
 
 推荐使用最新的 PowerShell 7 可以跨平台，基于.NET8。系统自带的是 PowerShell 5

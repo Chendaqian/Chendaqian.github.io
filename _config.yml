@@ -1,4 +1,4 @@
-safe: false
+safe: true
 
 # build settings
 markdown: kramdown
@@ -10,9 +10,9 @@ lsi: false
 permalink: /:title
 
 title: "ChenDaqian"
-description: '.NET Egineer'
-baseurl: "/"
-url: "https://chendaqian.github.io/" # replace by your site's url
+description: '.NET Engineer'
+baseurl: ""
+url: "https://chendaqian.github.io" # replace by your site's url
 cnblog_username: Chendaqian
 github_username:  ChenDaqian # (your name)
 accent: "#f7f7e6" # accent color for blog column

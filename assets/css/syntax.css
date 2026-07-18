@@ -277,14 +277,13 @@
 
 .highlight {
     color: #f8f8f2;
-    background-color: #49483e;
-    border-radius: 0.8rem;
+    background-color: #272822;
 }
 
 pre {
-    padding: 5px 5px 5px 5px;
-    white-space: pre-wrap;
-    line-height: 1.5;
+    padding: 0;
+    white-space: pre;
+    overflow-x: auto;
 }
 
 p code {

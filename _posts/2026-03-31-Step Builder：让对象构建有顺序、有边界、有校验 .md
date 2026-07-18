@@ -11,9 +11,6 @@ excerpt: >-
 
 ---
 
-
-# Step Builder：让对象构建有顺序、有边界、有校验
-
 ## 前言
 
 在业务日志上报场景里，入参通常有“必填且有顺序”的要求：必须先给 `TenantId`，再给 `OperatorId`，再给 `TraceId`，最后补充动态字段并 `Build()`。  

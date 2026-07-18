@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>表格样式预览</title>
+<style>
+    body {
+        font-family: -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif;
+        background: #f7f7e6;
+        padding: 40px;
+        color: #333;
+    }
+    h1 { font-size: 24px; margin-bottom: 8px; }
+    h2 { font-size: 18px; margin: 40px 0 12px; color: #666; }
+
+    .t-wrap {
+        border: 2px solid #bbb;
+        border-radius: 6px;
+        overflow: hidden;
+        margin-bottom: 20px;
+    }
+    .t-wrap table {
+        border: none;
+        margin: 0;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        font-size: 14px;
+        counter-reset: r;
+    }
+    thead th {
+        padding: 10px 14px;
+        text-align: left;
+        font-weight: 600;
+        white-space: nowrap;
+    }
+    tbody td {
+        padding: 9px 14px;
+        vertical-align: top;
+    }
+    tbody tr { counter-increment: r; }
+    tbody td:first-child::before {
+        content: counter(r);
+        color: #bbb;
+        margin-right: 8px;
+        font-size: 12px;
+    }
+
+    /* 当前方案 */
+    .s-a thead { background: #eedede; color: #555; }
+    .s-a thead th { border-bottom: 2px solid #db4646; }
+    .s-a th { border-right: 1px solid #d8d8d8; }
+    .s-a th:last-child { border-right: none; }
+    .s-a td { border-right: 1px solid #d8d8d8; border-bottom: 1px solid #d8d8d8; }
+    .s-a td:last-child { border-right: none; }
+    .s-a tbody tr:last-child td { border-bottom: none; }
+    .s-a tbody tr:nth-child(even) { background: #f2efdf; }
+    .s-a tbody tr:hover { background: #fdf5f5; }
+
+    /* 备选1: 暖粉表头 */
+    .s-b thead { background: #f0d8d8; color: #555; }
+    .s-b thead th { border-bottom: 2px solid #d4b0b0; }
+    .s-b th { border-right: 1px solid #e0d4d4; }
+    .s-b th:last-child { border-right: none; }
+    .s-b td { border-right: 1px solid #e0d4d4; border-bottom: 1px solid #e0d4d4; }
+    .s-b td:last-child { border-right: none; }
+    .s-b tbody tr:last-child td { border-bottom: none; }
+    .s-b tbody tr:nth-child(even) { background: #f2efdf; }
+    .s-b tbody tr:hover { background: #fdf5f5; }
+
+    /* 备选2: 白表头 */
+    .s-c thead { background: #fff; color: #444; }
+    .s-c thead th { border-bottom: 3px solid #db4646; }
+    .s-c th { border-right: 1px solid #e0e0e0; }
+    .s-c th:last-child { border-right: none; }
+    .s-c td { border-right: 1px solid #e0e0e0; border-bottom: 1px solid #e0e0e0; }
+    .s-c td:last-child { border-right: none; }
+    .s-c tbody tr:last-child td { border-bottom: none; }
+    .s-c tbody tr:nth-child(even) { background: #f5f5f2; }
+    .s-c tbody tr:hover { background: #fdf5f5; }
+</style>
+</head>
+<body>
+
+<h1>表格样式预览（背景色 = 博客正文区 #f7f7e6）</h1>
+
+<h2>当前方案 — 淡粉表头 + 红线强调</h2>
+<div class="t-wrap"><table class="s-a">
+<thead><tr><th>概念</th><th>核心对象</th><th>关键问题</th></tr></thead>
+<tbody>
+<tr><td>Prompt Engineering</td><td>指令表达</td><td>我有没有把任务讲清楚？</td></tr>
+<tr><td>Context Engineering</td><td>信息供给</td><td>模型有没有拿到正确材料？</td></tr>
+<tr><td>Harness Engineering</td><td>运行控制</td><td>模型在执行中能否持续做对？</td></tr>
+</tbody>
+</table></div>
+
+<h2>备选1 — 暖粉表头 + 同色底线</h2>
+<div class="t-wrap"><table class="s-b">
+<thead><tr><th>概念</th><th>核心对象</th><th>关键问题</th></tr></thead>
+<tbody>
+<tr><td>Prompt Engineering</td><td>指令表达</td><td>我有没有把任务讲清楚？</td></tr>
+<tr><td>Context Engineering</td><td>信息供给</td><td>模型有没有拿到正确材料？</td></tr>
+<tr><td>Harness Engineering</td><td>运行控制</td><td>模型在执行中能否持续做对？</td></tr>
+</tbody>
+</table></div>
+
+<h2>备选2 — 白表头 + 红色底线</h2>
+<div class="t-wrap"><table class="s-c">
+<thead><tr><th>概念</th><th>核心对象</th><th>关键问题</th></tr></thead>
+<tbody>
+<tr><td>Prompt Engineering</td><td>指令表达</td><td>我有没有把任务讲清楚？</td></tr>
+<tr><td>Context Engineering</td><td>信息供给</td><td>模型有没有拿到正确材料？</td></tr>
+<tr><td>Harness Engineering</td><td>运行控制</td><td>模型在执行中能否持续做对？</td></tr>
+</tbody>
+</table></div>
+
+</body>
+</html>

@@ -12,12 +12,6 @@ excerpt: >-
 ---
 
 
-
-
-# Andrej Karpathy Skills：给 Claude Code 加四条行为约束
-
----
-
 发现了一个最近热度很高的仓库： [andrej-karpathy-skills](https://github.com/multica-ai/andrej-karpathy-skills)   129k star
 
 它做的事情很直接：把 Andrej Karpathy 对 LLM 编码常见问题的观察整理成 Claude Code 的行为约束，落成一份 `CLAUDE.md`，或者一个 skill。

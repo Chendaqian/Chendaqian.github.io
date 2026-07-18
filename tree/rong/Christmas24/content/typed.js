@@ -20,11 +20,7 @@
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
 
-
-
-
 ! function(window, document, $) {
-
 	"use strict";
 
 	var Typed = function(el, options) {
@@ -114,7 +110,6 @@
 	};
 
 	Typed.prototype = {
-
 		constructor: Typed,
 
 		init: function() {
@@ -239,9 +234,7 @@
 						self.timeout = setTimeout(function() {
 							self.backspace(curString, curStrPos);
 						}, self.backDelay);
-
 					} else {
-
 						/* call before functions if applicable */
 						if (curStrPos === 0) {
 							self.options.preStringTyped(self.arrayPos);
@@ -272,7 +265,6 @@
 
 				// humanized value for typing
 			}, humanize);
-
 		},
 
 		backspace: function(curString, curStrPos) {
@@ -292,7 +284,6 @@
 			var humanize = Math.round(Math.random() * (100 - 30)) + this.backSpeed;
 
 			self.timeout = setTimeout(function() {
-
 				// ----- this part is optional ----- //
 				// check string array position
 				// on the first string, only delete one word
@@ -351,7 +342,6 @@
 
 				// humanized value for typing
 			}, humanize);
-
 		},
 
 		// Adds a CSS class to fade out current string
@@ -426,7 +416,6 @@
 			// Send the callback
 			this.options.resetCallback();
 		}
-
 	};
 
 	Typed.new = function(selector, option) {
@@ -493,6 +482,4 @@
 		// callback for reset
 		resetCallback: function() {}
 	};
-
-
 }(window, document, window.jQuery);

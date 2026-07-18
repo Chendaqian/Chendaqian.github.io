@@ -9,11 +9,6 @@ excerpt: 有时候我们需要升级整个解决方案中的某些Nuget版本，
 
 ---
 
-
-
-
-# 批量升级项目中的 Nuget
-
 有时候我们需要升级整个解决方案中的某些Nuget版本，如果每个手动使用[NuGet Package Manager](https://learn.microsoft.com/zh-cn/nuget/consume-packages/install-use-packages-visual-studio)
 会很麻烦。经过一个周末的踩坑，我找到一个解决方案。
 

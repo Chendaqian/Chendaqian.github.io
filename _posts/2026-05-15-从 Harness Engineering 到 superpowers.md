@@ -11,9 +11,6 @@ excerpt: >-
 
 ---
 
-
-# Superpowers：让 Claude Code 成为你的资深开发搭档
-
 ## 什么是 Superpowers
 
 Superpowers 不是简单的提示词模板，而是一套有纪律、可验证、可追溯的开发方法论。

@@ -17,10 +17,10 @@ title : Atom Feed
  {% for post in site.posts %}
  {% if post.isDisplay == true %}
  <entry>
-   <title>{{ post.title }}</title>
-   <link href="{{ site.url }}{{ site.baseurl }}#{{ post.date | date: "%F-%H" }}" />
+   <title>{{ post.title | xml_escape }}</title>
+   <link href="{{ post.url | absolute_url | xml_escape }}" />
    <updated>{{ post.date | date_to_xmlschema }}</updated>
-   <id>{{ post.id }}</id>
+   <id>{{ post.id | xml_escape }}</id>
    <content type="html">{{ post.content | xml_escape }}</content>
  </entry>
  {% endif %}

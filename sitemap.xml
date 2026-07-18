@@ -6,7 +6,7 @@ layout: null
   {% for post in site.posts %}
   {% if post.isDisplay == true %}
   <url>
-    <loc>{{ site.url }}{{ site.baseurl }}{{ post.url }}</loc>
+    <loc>{{ site.url }}{{ site.baseurl }}{{ post.url | xml_escape }}</loc>
     {% if post.lastmod == null %}
     <lastmod>{{ post.date | date_to_xmlschema }}</lastmod>
     {% else %}

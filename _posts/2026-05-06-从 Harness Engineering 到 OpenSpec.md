@@ -11,8 +11,6 @@ excerpt: >-
 
 ---
 
-# OpenSpec — AI 规范驱动开发 (Spec-Driven Development)
-
 > 让 Agent 真正理解你的意图
 
 OpenSpec 是 AI-Native 的规范驱动开发系统，为 AI 提供轻量级规范层。先与 AI 对齐需求，让开发过程更可预测、更高效。

@@ -11,8 +11,6 @@ excerpt: >-
 
 ---
 
-# MagicCenterHub 🚦
-
 <div align="center">
     <img width="300" height="236"  alt="PixPin_2026-06-13_19-40-09" src="https://github.com/user-attachments/assets/ff76e92f-a932-449c-ae15-31b27944fd02" />
 </div>

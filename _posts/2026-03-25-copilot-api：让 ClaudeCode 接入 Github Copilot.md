@@ -11,9 +11,6 @@ excerpt: >-
 
 ---
 
-
-## copilot-api
-
 `Claude Code` 只接受 `Anthropic API` 格式，而 `GitHub Copilot` 提供的是 `OpenAI` 格式
 
 目前已经有很多工具实现了这个转换，比如：

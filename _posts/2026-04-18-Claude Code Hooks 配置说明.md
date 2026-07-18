@@ -12,9 +12,6 @@ excerpt: >-
 
 ---
 
-
-# Claude Code Hooks 配置说明
-
 ## 概述
 
 本配置使用 Windows Toast 通知系统，在 Claude Code 执行关键事件时发送桌面通知，让你无需盯着终端即可了解任务状态。

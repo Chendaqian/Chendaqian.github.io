@@ -2,24 +2,56 @@
 layout: default
 ---
 
-{% for post in site.posts %}
-{% if post.isDisplay == true %}
-<div id="{{ post.date | date: "%F-%H" }}" class="unit whole align-left post">
+{% assign posts_per_page = 10 %}
+{% assign display_posts = site.posts | where: "isDisplay", true %}
+{% assign total_pages = display_posts.size | plus: posts_per_page | minus: 1 | divided_by: posts_per_page %}
+
+<div id="post-list">
+{% for post in display_posts %}
+<div id="{{ post.url | remove: "/" }}" class="unit whole align-left post" data-page="{{ forloop.index0 | divided_by: posts_per_page | plus: 1 }}"{% if forloop.index0 >= posts_per_page %} style="display:none;"{% endif %}>
     <article itemscope itemtype="http://schema.org/BlogPosting">
         <h2>
             <a href="{{ post.url | relative_url }}" target="_blank" title="{{post.title}}">{{ post.title }}</a>
             <small class="chip">{{ post.date | date: "%Y-%m-%d" }}</small>
-            <!--<a class="chip" href="#"><i class="icon ion-ios-heart"></i> LIKE</a>
-            <a class="chip" href="#"><i class="icon ion-android-share-alt"></i> SHARE</a>-->
         </h2>
         <div class="post-content">
             {{ post.excerpt }}
         </div>
     </article>
 </div>
-{% endif %}
 {% endfor %}
+</div>
 
+{% if total_pages > 1 %}
+<div class="unit whole align-center" style="margin: 30px 0;" id="pagination">
+    <a href="javascript:void(0)" class="btn" id="prev-btn" style="visibility:hidden;">&laquo; 上一页</a>
+    <span style="margin: 0 12px; color: #999;"><span id="cur-page">1</span> / {{ total_pages }}</span>
+    <a href="javascript:void(0)" class="btn" id="next-btn">下一页 &raquo;</a>
+</div>
+<script>
+(function(){
+    var cur = 1;
+    var total = {{ total_pages }};
+    var perPage = {{ posts_per_page }};
+    var list = document.getElementById('post-list');
+    var posts = list.querySelectorAll('.post');
+    var curSpan = document.getElementById('cur-page');
+    var prevBtn = document.getElementById('prev-btn');
+    var nextBtn = document.getElementById('next-btn');
 
+    function show(p) {
+        cur = p;
+        for (var i = 0; i < posts.length; i++) {
+            posts[i].style.display = (Math.floor(i / perPage) + 1 === p) ? '' : 'none';
+        }
+        curSpan.textContent = p;
+        prevBtn.style.visibility = p <= 1 ? 'hidden' : '';
+        nextBtn.style.visibility = p >= total ? 'hidden' : '';
+        window.scrollTo({ top: list.offsetTop - 20, behavior: 'smooth' });
+    }
 
-
+    prevBtn.addEventListener('click', function(){ if (cur > 1) show(cur - 1); });
+    nextBtn.addEventListener('click', function(){ if (cur < total) show(cur + 1); });
+})();
+</script>
+{% endif %}

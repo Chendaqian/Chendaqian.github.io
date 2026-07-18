@@ -1,17 +1,16 @@
 (function () {
-    
     var codeGenerator = (typeof eval("(function () {})") == "function") ?
         function (code) { return code; } :
         function (code) { return "false || " + code; };
-        
+
     // support string type only.
     var stringify = (typeof JSON !== "undefined" && JSON.stringify) ?
         function (s) { return JSON.stringify(s); } :
         (function () {
             // Implementation comes from JSON2 (http://www.json.org/js.html)
-        
+
             var escapable = /[\\\"\x00-\x1f\x7f-\x9f\u00ad\u0600-\u0604\u070f\u17b4\u17b5\u200c-\u200f\u2028-\u202f\u2060-\u206f\ufeff\ufff0-\uffff]/g;
-            
+
             var meta = {    // table of character substitutions
                 '\b': '\\b',
                 '\t': '\\t',
@@ -21,7 +20,7 @@
                 '"' : '\\"',
                 '\\': '\\\\'
             }
-            
+
             return function (s) {
                 // If the string contains no control characters, no quote characters, and no
                 // backslash characters, then we can safely slap some quotes around it.
@@ -36,26 +35,23 @@
                 }) + '"' : '"' + s + '"';
             };
         })();
-    
+
     // seed defined in global
     if (typeof __jscex__tempVarSeed === "undefined") {
         __jscex__tempVarSeed = 0;
     }
 
     var init = function (root) {
-    
         if (root.modules["jit"]) {
             return;
         }
-    
+
         function JscexTreeGenerator(binder) {
             this._binder = binder;
             this._root = null;
         }
         JscexTreeGenerator.prototype = {
-
             generate: function (ast) {
-
                 var params = ast[2], statements = ast[3];
 
                 this._root = { type: "delay", stmts: [] };
@@ -66,7 +62,6 @@
             },
 
             _getBindInfo: function (stmt) {
-
                 var type = stmt[0];
                 if (type == "stat") {
                     var expr = stmt[1];
@@ -106,7 +101,7 @@
                                     expression: expr[2][0],
                                     argName: name,
                                     assignee: null
-                                };                            
+                                };
                             }
                         }
                     }
@@ -146,16 +141,12 @@
                         bindStmt.stmts = [];
                         this._visitStatements(statements, bindStmt.stmts, index + 1);
                     }
-
                 } else {
                     var type = currStmt[0];
                     if (type == "return" || type == "break" || type == "continue" || type == "throw") {
-
                         stmts.push({ type: type, stmt: currStmt });
-
                     } else if (type == "if" || type == "try" || type == "for" || type == "do"
                                || type == "while" || type == "switch" || type == "for-in") {
-
                         var newStmt = this._visit(currStmt);
 
                         if (newStmt.type == "raw") {
@@ -166,7 +157,6 @@
                             if (isLast) {
                                 stmts.push(newStmt);
                             } else {
-
                                 var combineStmt = {
                                     type: "combine",
                                     first: { type: "delay", stmts: [newStmt] },
@@ -177,9 +167,7 @@
                                 this._visitStatements(statements, combineStmt.second.stmts, index + 1);
                             }
                         }
-
                     } else {
-
                         stmts.push({ type: "raw", stmt: currStmt });
 
                         this._visitStatements(statements, stmts, index + 1);
@@ -190,7 +178,6 @@
             },
 
             _visit: function (ast) {
-
                 var type = ast[0];
 
                 function throwUnsupportedError() {
@@ -245,9 +232,7 @@
             },
 
             _visitors: {
-
                 "for": function (ast) {
-
                     var bodyStmts = [];
                     var body = ast[4];
                     this._visitBody(body, bodyStmts);
@@ -257,7 +242,7 @@
                     }
 
                     var delayStmt = { type: "delay", stmts: [] };
-            
+
                     var setup = ast[1];
                     if (setup) {
                         delayStmt.stmts.push({ type: "raw", stmt: setup });
@@ -265,12 +250,12 @@
 
                     var loopStmt = { type: "loop", bodyFirst: false, bodyStmt: { type: "delay", stmts: bodyStmts } };
                     delayStmt.stmts.push(loopStmt);
-                    
+
                     var condition = ast[2];
                     if (condition) {
                         loopStmt.condition = condition;
                     }
-                    
+
                     var update = ast[3];
                     if (update) {
                         loopStmt.update = update;
@@ -280,16 +265,15 @@
                 },
 
                 "for-in": function (ast) {
-
                     var body = ast[4];
-                    
+
                     var bodyStmts = [];
                     this._visitBody(body, bodyStmts);
 
                     if (this._noBinding(bodyStmts)) {
                         return { type: "raw", stmt: ast };
                     }
-                
+
                     var id = (__jscex__tempVarSeed++);
                     var keysVar = "$$_keys_$$_" + id;
                     var indexVar = "$$_index_$$_" + id;
@@ -308,13 +292,13 @@
                         type: "raw",
                         stmt: uglifyJS.parse("var " + membersVar + " = [];")[1][0]
                     });
-                    
+
                     // for (var mem in obj) members.push(mem);
                     var keysAst = uglifyJS.parse("for (var " + memVar +" in obj) " + membersVar + ".push(" + memVar + ");")[1][0];
                     keysAst[3] = ast[3]; // replace the "obj" with real AST.
                     delayStmt.stmts.push({ type : "raw", stmt: keysAst});
                     */
-                    
+
                     // var index = 0;
                     delayStmt.stmts.push({
                         type: "raw",
@@ -355,7 +339,6 @@
                 },
 
                 "while": function (ast) {
-
                     var bodyStmts = [];
                     var body = ast[2];
                     this._visitBody(body, bodyStmts);
@@ -373,7 +356,6 @@
                 },
 
                 "do": function (ast) {
-
                     var bodyStmts = [];
                     var body = ast[2];
                     this._visitBody(body, bodyStmts);
@@ -396,7 +378,7 @@
                     var switchStmt = { type: "switch", item: ast[1], caseStmts: [] };
 
                     var cases = ast[2];
-                    for (var i = 0; i < cases.length; i++) {                    
+                    for (var i = 0; i < cases.length; i++) {
                         var caseStmt = { item: cases[i][0], stmts: [] };
                         switchStmt.caseStmts.push(caseStmt);
 
@@ -413,7 +395,6 @@
                 },
 
                 "if": function (ast) {
-
                     var noBinding = true;
 
                     var ifStmt = { type: "if", conditionStmts: [] };
@@ -436,13 +417,13 @@
                             break;
                         }
                     }
-        
+
                     var elsePart = currAst[3];
                     if (elsePart) {
                         ifStmt.elseStmts = [];
 
                         this._visitBody(elsePart, ifStmt.elseStmts);
-                        
+
                         noBinding = noBinding && this._noBinding(ifStmt.elseStmts);
                     }
 
@@ -454,7 +435,6 @@
                 },
 
                 "try": function (ast, stmts) {
-
                     var bodyStmts = [];
                     var bodyStatements = ast[1];
                     this._visitStatements(bodyStatements, bodyStmts);
@@ -462,7 +442,7 @@
                     var noBinding = this._noBinding(bodyStmts)
 
                     var tryStmt = { type: "try", bodyStmt: { type: "delay", stmts: bodyStmts } };
-                    
+
                     var catchClause = ast[2];
                     if (catchClause) {
                         var exVar = catchClause[0];
@@ -627,7 +607,7 @@
                 var funcName = ast[1] || "";
                 var args = ast[2];
                 var statements = ast[3];
-                
+
                 this._writeLine("function " + funcName + "(" + args.join(", ") + ") {")
                 this._indentLevel++;
 
@@ -761,10 +741,9 @@
                 },
 
                 "if": function (ast) {
-
                     for (var i = 0; i < ast.conditionStmts.length; i++) {
                         var stmt = ast.conditionStmts[i];
-                        
+
                         this._write("if (")._visitRaw(stmt.cond)._writeLine(") {");
                         this._indentLevel++;
 
@@ -891,7 +870,7 @@
                 "seq": function (ast) {
                     for (var i = 1; i < ast.length; i++) {
                         this._visitRaw(ast[i]);
-                        if (i < ast.length - 1) this._write(", "); 
+                        if (i < ast.length - 1) this._write(", ");
                     }
                 },
 
@@ -995,13 +974,11 @@
                 },
 
                 "call": function (ast) {
-                
                     if (_isJscexPattern(ast)) {
                         var indent = this._indent + this._indentLevel * 4;
                         var newCode = _compileJscexPattern(ast, indent);
                         this._write(newCode);
                     } else {
-
                         var invalidBind = (ast[1][0] == "name") && (ast[1][1] == this._binder);
                         if (invalidBind) {
                             this._pos = { inFunction: true };
@@ -1035,19 +1012,19 @@
                     } else {
                         this._writeLine("{");
                         this._indentLevel++;
-                        
+
                         for (var i = 0; i < items.length; i++) {
                             this._writeIndents()
                                 ._write(stringify(items[i][0]) + ": ")
                                 ._visitRaw(items[i][1]);
-                            
+
                             if (i < items.length - 1) {
                                 this._writeLine(",");
                             } else {
                                 this._writeLine("");
                             }
                         }
-                        
+
                         this._indentLevel--;
                         this._writeIndents()._write("}");
                     }
@@ -1095,7 +1072,7 @@
                         this._write("return ")._visitJscex({ type: "return", stmt: ast })._write(";");
                     }
                 },
-                
+
                 "for": function (ast) {
                     this._write("for (");
 
@@ -1137,7 +1114,7 @@
                     } else {
                         this._visitRaw(declare);
                     }
-                    
+
                     this._write(" in ")._visitRaw(ast[3])._write(") ");
 
                     var body = ast[4];
@@ -1240,7 +1217,6 @@
                 },
 
                 "try": function (ast) {
-
                     this._writeLine("try {");
                     this._indentLevel++;
 
@@ -1271,7 +1247,7 @@
 
                         this._visitRawStatements(finallyStatements);
                         this._indentLevel--;
-                    }                
+                    }
 
                     this._writeIndents()
                         ._write("}");
@@ -1311,7 +1287,7 @@
 
         function _isJscexPattern(ast) {
             if (ast[0] != "call") return false;
-            
+
             var evalName = ast[1];
             if (evalName[0] != "name" || evalName[1] != "eval") return false;
 
@@ -1332,9 +1308,8 @@
 
             return true;
         }
-        
-        function _compileJscexPattern(ast, indent) {
 
+        function _compileJscexPattern(ast, indent) {
             var builderName = ast[2][0][2][0][1];
             var funcAst = ast[2][0][2][1];
             var binder = root.binders[builderName];
@@ -1347,9 +1322,8 @@
 
             return newCode;
         }
-        
-        function compile(builderName, func) {
 
+        function compile(builderName, func) {
             var funcCode = func.toString();
             var evalCode = "eval(Jscex.compile(" + stringify(builderName) + ", " + funcCode + "))"
             var evalCodeAst = root.parse(evalCode);
@@ -1359,24 +1333,24 @@
             var newCode = _compileJscexPattern(evalAst, 0);
 
             root.logger.debug(funcCode + "\n\n>>>\n\n" + newCode);
-            
+
             return codeGenerator(newCode);
         };
 
         root.compile = compile;
-        
+
         root.modules["jit"] = true;
     }
-    
+
     var isCommonJS = (typeof require !== "undefined" && typeof module !== "undefined" && module.exports);
     var isAmd = (typeof define !== "undefined" && define.amd);
-    
+
     if (isCommonJS) {
         module.exports.init = function (root) {
             if (!root.modules["parser"]) {
                 require("./jscex-parser").init(root);
             };
-            
+
             init(root);
         }
     } else if (isAmd) {
@@ -1386,7 +1360,7 @@
                     if (!root.modules["parser"]) {
                         parser.init(root);
                     }
-                    
+
                     init(root);
                 }
             };
@@ -1395,12 +1369,11 @@
         if (typeof Jscex === "undefined") {
             throw new Error('Missing root object, please load "jscex" module first.');
         }
-        
+
         if (!Jscex.modules["parser"]) {
             throw new Error('Missing essential components, please initialize "parser" module first.');
         }
 
         init(Jscex);
     }
-
 })();
