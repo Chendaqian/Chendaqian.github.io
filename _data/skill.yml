@@ -1,7 +1,7 @@
 - name: Dev language
   items:
     - name: CSharp
-      href: 'https://learn.microsoft.com/en-us/dotnet/csharp/tour-of-csharp/'
+      href: 'https://learn.microsoft.com/en-us/dotnet/csharp/'
       imgSrc: >-
         /images/csharp.svg
     - name: Python
@@ -112,7 +112,7 @@
       href: 'https://mobaxterm.mobatek.net/'
       imgSrc: >-
         /images/mobaxterm.svg
-    - name: LINQPad 
+    - name: LINQPad
       href: 'https://www.linqpad.net/'
       imgSrc: >-
         /images/linqpad.svg

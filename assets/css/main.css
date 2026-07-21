@@ -122,6 +122,19 @@ li {
 
 .post {
     margin-top: 30px;
+    padding-bottom: 48px;
+}
+/* 文章间渐变分割线 */
+.post::after {
+    content: '';
+    display: block;
+    clear: both;
+    height: 1px;
+    margin-top: 12px;
+    background: linear-gradient(to right, transparent, #c8a0a0 20%, #c8a0a0 80%, transparent);
+}
+.post:last-of-type::after {
+    display: none;
 }
 .post-meta {
     display: flex;
